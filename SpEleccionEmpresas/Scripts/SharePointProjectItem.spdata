@@ -7,5 +7,7 @@
     <ProjectItemFile Source="app\main.ts" Target="Scripts\app\" Type="ElementFile" />
     <ProjectItemFile Source="app\components\app.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
     <ProjectItemFile Source="app\templates\app.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="app\models\empresa.ts" Target="Scripts\app\models\" Type="ElementFile" />
+    <ProjectItemFile Source="app\models\alumno.ts" Target="Scripts\app\models\" Type="ElementFile" />
   </Files>
 </ProjectItem>

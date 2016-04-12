@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Field
        ID="{995e7220-e87d-45d2-89b2-9145ec38f416}"
        Name="AlumnoId"
        DisplayName="Alumno Id"
-       Type="Number"
+       Type="Lookup"
+       List="Lists/Alumno"
+       ShowField="Nombre"
        Required="FALSE"
        Group="Custom Site Columns">
   </Field>

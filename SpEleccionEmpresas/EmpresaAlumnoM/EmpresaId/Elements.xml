@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Field
        ID="{2aa34eb1-f589-4006-89b2-9390f6b4a469}"
        Name="EmpresaId"
        DisplayName="Empresa Id"
-       Type="Number"
+       Type="Lookup"
+       List="Lists/Empresa"
+       ShowField="Nombre"
        Required="FALSE"
        Group="Custom Site Columns">
   </Field>

@@ -6,5 +6,7 @@
     <File Path="Scripts\app\main.ts" Url="Scripts/app/main.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\components\app.component.ts" Url="Scripts/app/components/app.component.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\templates\app.template.html" Url="Scripts/app/templates/app.template.html" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\models\empresa.ts" Url="Scripts/app/models/empresa.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\models\alumno.ts" Url="Scripts/app/models/alumno.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>
