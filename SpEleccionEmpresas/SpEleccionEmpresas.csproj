@@ -43,23 +43,114 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="AlumnoM\AlumnoCt\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\AlumnoId\Elements.xml" />
+    <Content Include="AlumnoM\Elements.xml" />
+    <Content Include="AlumnoM\Sample.txt" />
+    <Content Include="AlumnoM\Alumno\AlumnoInstance\Elements.xml" />
+    <Content Include="AlumnoM\Alumno\Elements.xml" />
+    <Content Include="AlumnoM\Alumno\Schema.xml" />
+    <Content Include="AlumnoM\Apellidos\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\EmpresaAlumnoCt\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\EmpresaAlumno\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\EmpresaAlumno\EmpresaAlumnoInstance\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\EmpresaAlumno\Schema.xml" />
+    <Content Include="EmpresaAlumnoM\Sample.txt" />
+    <Content Include="EmpresaAlumnoM\EmpresaId\Elements.xml" />
+    <Content Include="EmpresaM\Elements.xml" />
+    <Content Include="EmpresaM\Sample.txt" />
+    <Content Include="EmpresaM\Empresa\Elements.xml" />
+    <Content Include="EmpresaM\Empresa\EmpresaInstance\Elements.xml" />
+    <Content Include="EmpresaM\Empresa\Schema.xml" />
+    <Content Include="Features\Feature2\Feature2.Template.xml">
+      <DependentUpon>Feature2.feature</DependentUpon>
+    </Content>
+    <Content Include="AlumnoM\Puntacion\Elements.xml" />
+    <Content Include="EmpresaM\Vacantes\Elements.xml" />
+    <None Include="AlumnoM\AlumnoCt\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0d82c045-a2aa-4dfd-9c0b-de319189ba82}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\AlumnoId\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a847abb8-0f1f-4812-957f-ceeb7e029e9a}</SharePointProjectItemId>
+    </None>
+    <None Include="AlumnoM\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{82915d81-1611-435e-bb37-8054f9545fdf}</SharePointProjectItemId>
+    </None>
+    <None Include="AlumnoM\Alumno\AlumnoInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5e694fdf-52d4-41b4-92dd-cb7eed171175}</SharePointProjectItemId>
+    </None>
+    <None Include="AlumnoM\Alumno\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{776b7200-156d-4915-8794-4bb7d302d40f}</SharePointProjectItemId>
+    </None>
+    <None Include="AlumnoM\Apellidos\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2478f0d9-f84e-4609-a8f2-3bea00a9c368}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\EmpresaAlumnoCt\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{04b1ed59-8e4b-4a2a-9841-75027dfa960a}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\EmpresaAlumno\EmpresaAlumnoInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{185bfdb7-3fe2-46ed-87ce-189ad6db300d}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\EmpresaAlumno\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{710f7e4f-42e7-4a99-88eb-8c9d72d664f7}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4f93885c-f8f3-49ad-8a0e-d687ccdef1a1}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaM\Descripcion\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d01f6de2-f81e-4360-a496-aaf056b14b78}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaM\EmpresaCt\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{09a33011-a751-4f40-ab8e-3967d0325b4b}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\EmpresaId\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ee3ee779-9316-4184-a898-0d2a39c78e9d}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaM\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{93b69e8f-21b6-40e5-a886-17c2220e8c20}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaM\Empresa\EmpresaInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4b8db04c-ac62-4d8a-a1c8-46ba04265566}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaM\Empresa\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{69a13721-3566-4200-b726-87edfeb47198}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Feature2\Feature2.feature">
+      <FeatureId>{a39826ef-1e29-46a4-b649-d63738e31681}</FeatureId>
+    </None>
+    <None Include="AlumnoM\Nombre\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{df591d51-71c5-4f29-92d8-20d20094558f}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Feature3\Feature3.feature">
+      <FeatureId>{1dca9700-d13e-4043-8214-17cde1d1e991}</FeatureId>
+    </None>
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{7bca7a0b-fabf-4835-b6d3-ab8b8b8ef863}</SharePointProjectItemId>
     </None>
+    <Content Include="EmpresaM\Descripcion\Elements.xml" />
+    <Content Include="EmpresaM\EmpresaCt\Elements.xml" />
+    <Content Include="AlumnoM\Nombre\Elements.xml" />
+    <Content Include="Features\Feature3\Feature3.Template.xml">
+      <DependentUpon>Feature3.feature</DependentUpon>
+    </Content>
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
+    <None Include="AlumnoM\Puntacion\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b4000ae9-50c0-4b86-a97e-fd774d6da50c}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaM\Vacantes\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7fb614dd-1e64-4c39-aa82-900051807c24}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2bc6ee5e-0e56-4641-8bcb-bb24c4768bd6}</SharePointProjectItemId>
     </None>
+    <Content Include="Scripts\app\app.config.js" />
+    <Content Include="Scripts\app\templates\app.template.html" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
-    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +187,14 @@
     <AppManifestFile Include="AppManifest.xml">
       <SubType>Designer</SubType>
     </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\app\models\" />
+    <Folder Include="Scripts\app\services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\components\app.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\main.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

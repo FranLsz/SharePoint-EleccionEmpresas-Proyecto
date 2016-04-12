@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package dslVersion="1.0.0.0" 
-        Id="6dfadcb5-8664-4bad-a4a7-f6f0d06bec33" 
-        solutionId="6dfadcb5-8664-4bad-a4a7-f6f0d06bec33" 
-        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
-        name="SpEleccionEmpresas"
-        sharePointProductVersion="16.0">
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="6dfadcb5-8664-4bad-a4a7-f6f0d06bec33" solutionId="6dfadcb5-8664-4bad-a4a7-f6f0d06bec33" resetWebServer="false" sharePointProductVersion="16.0" name="SpEleccionEmpresas" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
-        <featureReference itemId="4a4a3e6b-7b3c-4a5c-a094-005d12261de1" />
+    <featureReference itemId="4a4a3e6b-7b3c-4a5c-a094-005d12261de1" />
+    <featureReference itemId="a39826ef-1e29-46a4-b649-d63738e31681" />
+    <featureReference itemId="1dca9700-d13e-4043-8214-17cde1d1e991" />
   </features>
 </package>

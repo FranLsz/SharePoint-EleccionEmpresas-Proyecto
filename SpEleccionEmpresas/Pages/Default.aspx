@@ -8,15 +8,58 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
-    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
-    <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink Name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <meta name="WebPartPageExpansion" content="full" />
 
     <!-- Add your CSS styles to the following file -->
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
 
-    <!-- Add your JavaScript to the following file -->
-    <script type="text/javascript" src="../Scripts/App.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
+    <!-- IE required polyfills -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.0/es6-shim.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
+    <script type="text/javascript" src="https://npmcdn.com/angular2@2.0.0-beta.9/es6/dev/src/testing/shims_for_IE.js"></script>
+
+    <script type="text/javascript" src="https://code.angularjs.org/2.0.0-beta.9/angular2-polyfills.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/tools/system.js"></script>
+    <script type="text/javascript" src="https://npmcdn.com/typescript@1.8.9/lib/typescript.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/2.0.0-beta.9/Rx.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/2.0.0-beta.9/angular2.dev.js"></script>
+
+    <!-- Router library -->
+    <script type="text/javascript" src="https://code.angularjs.org/2.0.0-beta.9/router.dev.js"></script>
+
+    <!-- Http library -->
+    <script type="text/javascript" src="https://code.angularjs.org/2.0.0-beta.9/http.dev.js"></script>
+
+    <!-- Config and global vars JS file -->
+    <script type="text/javascript" src="../Scripts/app/app.config.js"></script>
+
+    <script type="text/javascript">
+
+        System.config({
+            transpiler: 'typescript',
+            typescriptOptions: {
+                emitDecoratorMetadata: true
+            },
+            map: {
+                app: BASE_URL
+            },
+            packages: {
+                app: {
+                    main: 'main',
+                    defaultExtension: 'ts'
+                }
+            }
+        });
+
+        ExecuteOrDelayUntilScriptLoaded(function () {
+            System.import('app').catch(console.error.bind(console));
+        }, "sp.js");
+
+    </script>
 </asp:Content>
 
 <%-- The markup in the following Content element will be placed in the TitleArea of the page --%>
@@ -27,11 +70,6 @@
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
 
-    <div>
-        <p id="message">
-            <!-- The following content will be replaced with the user name when you run the app - see App.js -->
-            initializing...
-        </p>
-    </div>
+    <app-main></app-main>
 
 </asp:Content>

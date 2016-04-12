@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Elemento (0x01) -->
+  <ContentType ID="0x010083C397B02E9F48ECA181CC9C5EC667A3" Name="EmpresaCt" Group="Custom Content Types" Description="My Content Type" Inherits="TRUE" Version="0">
+    <FieldRefs>
+      <FieldRef ID="{60e1a421-2e77-4bae-90fd-0191f0b9a279}" DisplayName="Nombre" Required="TRUE" Name="Nombre" />
+      <FieldRef ID="{d988f727-f6a9-4c92-af1d-88196ec327d7}" DisplayName="Descripcion" Required="TRUE" Name="Descripcion" />
+      <FieldRef ID="{66606067-9c60-4e03-9c6e-52e1d891be16}" DisplayName="Vacantes" Required="TRUE" Name="Vacantes" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

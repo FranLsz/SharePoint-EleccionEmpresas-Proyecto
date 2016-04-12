@@ -3,9 +3,9 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="Scripts\" Type="ElementManifest" />
     <ProjectItemFile Source="App.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="jquery-1.9.1.min.map" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="jquery-1.9.1.min.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="jquery-1.9.1.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="jquery-1.9.1.intellisense.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="app\app.config.js" Target="Scripts\app\" Type="ElementFile" />
+    <ProjectItemFile Source="app\main.ts" Target="Scripts\app\" Type="ElementFile" />
+    <ProjectItemFile Source="app\components\app.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
+    <ProjectItemFile Source="app\templates\app.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
   </Files>
 </ProjectItem>

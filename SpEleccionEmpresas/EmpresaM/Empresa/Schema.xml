@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="Empresa" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Empresa" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/" EnableContentTypes="TRUE">
+  <MetaData>
+    <ContentTypes>
+      
+      
+    <ContentType ID="0x0100bb96ad1bab3b4d8f9aefb1f030bcb6e8" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{60e1a421-2e77-4bae-90fd-0191f0b9a279}" Name="Nombre" /><FieldRef ID="{d988f727-f6a9-4c92-af1d-88196ec327d7}" Name="Descripcion" /><FieldRef ID="{66606067-9c60-4e03-9c6e-52e1d891be16}" Name="Vacantes" /></FieldRefs></ContentType><ContentType ID="0x010083C397B02E9F48ECA181CC9C5EC667A3" Name="EmpresaCt" Group="Custom Content Types" Description="My Content Type" Inherits="TRUE" Version="0"><FieldRefs><FieldRef ID="{60e1a421-2e77-4bae-90fd-0191f0b9a279}" DisplayName="Nombre" Required="TRUE" Name="Nombre" /><FieldRef ID="{d988f727-f6a9-4c92-af1d-88196ec327d7}" DisplayName="Descripcion" Required="TRUE" Name="Descripcion" /><FieldRef ID="{66606067-9c60-4e03-9c6e-52e1d891be16}" DisplayName="Vacantes" Required="TRUE" Name="Vacantes" /></FieldRefs></ContentType></ContentTypes>
+    <Fields>
+      
+    <Field ID="{60e1a421-2e77-4bae-90fd-0191f0b9a279}" Name="Nombre" DisplayName="Nombre" Type="Text" Required="TRUE" Group="Custom Site Columns"></Field><Field ID="{d988f727-f6a9-4c92-af1d-88196ec327d7}" Name="Descripcion" DisplayName="Descripcion" Type="Note" Required="FALSE" Group="Custom Site Columns"></Field><Field ID="{66606067-9c60-4e03-9c6e-52e1d891be16}" Name="Vacantes" DisplayName="Vacantes" Type="Number" Required="FALSE" Group="Custom Site Columns"></Field></Fields>
+    <Views>
+      
+      
+    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitleNoMenu"></FieldRef></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="Modified" Ascending="FALSE"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View><View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="Nombre" /><FieldRef Name="Descripcion" /><FieldRef Name="Vacantes" /></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="ID"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View></Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>
