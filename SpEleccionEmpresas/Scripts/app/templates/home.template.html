@@ -1,0 +1,22 @@
+﻿<div class="homeWrapper">
+    <div style="text-align: center">
+        <h1>ELEM - Elección de empresas en prácticas</h1>
+    </div>
+
+    <div class="contenido">
+        <div class="columnaEmpresas">
+            <form-empresa [empresa]="empresaForm" [accion]="accionEmpresaForm" (formEmpresaEvt)="manejarEventos($event)"></form-empresa>
+            <lista-empresas [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+        </div>
+
+        <div class="columnaCen">
+            <input type="button" value="INICIAR SELECCIÓN" />
+        </div>
+
+        <div class="columnaAlumnos">
+            <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
+            <lista-alumnos [listaAlumnos]="listaAlumnos" (listaAlumnosEvt)="manejarEventos($event)"></lista-alumnos>
+        </div>
+    </div>
+
+</div>

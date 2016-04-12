@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="EmpresaAlumnoM">
-    <File Path="EmpresaAlumnoM\Sample.txt" Url="EmpresaAlumnoM/Sample.txt" ReplaceContent="TRUE" />
   </Module>
 </Elements>

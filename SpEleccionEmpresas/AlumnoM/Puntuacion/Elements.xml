@@ -2,8 +2,8 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
   <Field
        ID="{134fcc7c-2da2-43ac-a101-93d72fa5095d}"
-       Name="Puntacion"
-       DisplayName="Puntacion"
+       Name="Puntuacion"
+       DisplayName="Puntuacion"
        Type="Number"
        Required="FALSE"
        Group="Custom Site Columns">

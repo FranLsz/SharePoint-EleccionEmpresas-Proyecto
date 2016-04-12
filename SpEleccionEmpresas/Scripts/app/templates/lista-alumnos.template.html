@@ -1,0 +1,11 @@
+﻿<fieldset style="padding: 20px;">
+    <legend> Alumnos </legend>
+
+    <ul *ngFor="#alumno of listaAlumnos" (click)="onSelect(alumno)">
+        <li style="list-style-type: none;">
+            <strong>{{alumno.apellidos}}, {{alumno.nombre}}</strong>
+        </li>
+    </ul>
+
+    <label *ngIf="listaAlumnos.length==0">-Sin alumnos-</label>
+</fieldset>

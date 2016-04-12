@@ -1,0 +1,30 @@
+﻿<fieldset style="padding: 30px">
+    <legend> {{accion}} </legend>
+
+    <form *ngIf="activo" (ngSubmit)="onSubmit()" #empresaForm="ngForm">
+
+        <!-- Nombre  -->
+        <h2>Nombre</h2>
+        <input [(ngModel)]="empresa.nombre" ngControl="nombre" #nombre="ngForm" placeholder="Nombre" type="text" required>
+        <div [hidden]="nombre.valid || nombre.pristine" style="color: red">
+            Nombre requerido
+        </div><br />
+
+        <!-- Descripción -->
+        <h2>Descripción</h2>
+        <textarea [(ngModel)]="empresa.descripcion" ngControl="descripcion" #descripcion="ngForm" rows="4" cols="35" placeholder="Breve descripción del puesto que se va a desempeñar..." required></textarea>
+        <div [hidden]="descripcion.valid || descripcion.pristine" style="color: red">
+            Descripción requerida
+        </div><br /><br />
+
+        <!-- Vacantes -->
+        <h2>Vacantes</h2>
+        <input [(ngModel)]="empresa.vacantes" ngControl="vacantes" #vacantes="ngForm" pattern="^\d*\.?\d*$" placeholder="1, 3, 4" type="text" required>
+        <div [hidden]="vacantes.valid || vacantes.pristine" style="color: red">
+            Vacantes no válidas
+        </div><br /><br />
+
+        <br /><br /><input type="submit" value="{{btnAccion}}" [disabled]="!empresaForm.form.valid" />
+    </form>
+
+</fieldset>

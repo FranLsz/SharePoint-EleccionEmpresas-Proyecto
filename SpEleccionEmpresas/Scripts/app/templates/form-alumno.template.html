@@ -1,0 +1,46 @@
+﻿<fieldset style="padding: 30px">
+    <legend> {{accion}} </legend>
+
+    <form (ngSubmit)="onSubmit()" [ngFormModel]="form">
+
+        <h2>Nombre y apellidos</h2>
+        <input [(ngModel)]="alumno.nombre" ngControl="nombre" placeholder="Nombre" type="text">
+        <br />
+        <input [(ngModel)]="alumno.apellidos" ngControl="apellidos" placeholder="Apellidos" type="text" style="margin-top: 5px">
+
+
+        <h2>Puntuación</h2>
+        <input [(ngModel)]="alumno.puntuacion" ngControl="puntuacion" placeholder="25, 43, 86..." type="text">
+
+
+        <br /><br /><input type="submit" value="{{btnAccion}}" [disabled]="!form.valid" />
+    </form>
+
+</fieldset>
+
+
+
+
+<!--
+
+<form *ngIf="activo" (ngSubmit)="onSubmit()" #alumnoForm="ngForm">
+
+    <h2>Nombre y apellidos</h2>
+    <input [(ngModel)]="alumno.nombre" ngControl="nombre" #nombre="ngForm" placeholder="Nombre" type="text" required>
+    <div [hidden]="nombre.valid || nombre.pristine" style="color: red">
+        Nombre requerido
+    </div><br/>
+    <input [(ngModel)]="alumno.apellidos" ngControl="apellidos" #apellidos="ngForm" placeholder="Apellidos" type="text" required style="margin-top: 5px">
+    <div [hidden]="apellidos.valid || apellidos.pristine" style="color: red">
+        Apellidos requerido
+    </div><br/><br/>
+    <h2>Puntuación</h2>
+    <input [(ngModel)]="alumno.puntuacion" ngControl="puntuacion" #puntuacion="ngForm" pattern="^\d*\.?\d*$" placeholder="25, 43, 86..." type="text" required>
+    <div [hidden]="puntuacion.valid || puntuacion.pristine" style="color: red">
+        Puntuación requerida
+    </div><br/><br/>
+
+    <br/><br/><input type="submit" value="{{btnAccion}}" [disabled]="!alumnoForm.form.valid"/>
+</form>
+
+-->

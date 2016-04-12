@@ -64,12 +64,51 @@
 
 <%-- The markup in the following Content element will be placed in the TitleArea of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderPageTitleInTitleArea" runat="server">
-    Page Title
+    ELEM
 </asp:Content>
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
 
     <app-main></app-main>
+    <!--<div>
+
+    <div style="float: left">
+        <ul>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+        </ul>
+    </div>
+    <div style="float: left">
+        <ul>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+            <li>Hola amigos</li>
+        </ul>
+    </div>
+    </div>-->
 
 </asp:Content>

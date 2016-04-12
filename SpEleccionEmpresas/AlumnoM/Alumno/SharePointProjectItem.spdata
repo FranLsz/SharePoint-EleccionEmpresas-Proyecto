@@ -5,6 +5,6 @@
     <ProjectItemFile Source="Schema.xml" Target="Alumno\" Type="ElementFile" />
   </Files>
   <ExtensionData>
-    <ExtensionDataItem Key="Microsoft.VisualStudio.SharePoint.ListSettings.ListFieldsContentTypeID" Value="0x0100574aa041052346d9be0a2310bd932292" />
+    <ExtensionDataItem Key="Microsoft.VisualStudio.SharePoint.ListSettings.ListFieldsContentTypeID" Value="0x0100a28bca6f22354e31a6ae47e835343673" />
   </ExtensionData>
 </ProjectItem>

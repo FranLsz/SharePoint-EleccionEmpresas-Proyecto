@@ -46,7 +46,6 @@
     <Content Include="AlumnoM\AlumnoCt\Elements.xml" />
     <Content Include="EmpresaAlumnoM\AlumnoId\Elements.xml" />
     <Content Include="AlumnoM\Elements.xml" />
-    <Content Include="AlumnoM\Sample.txt" />
     <Content Include="AlumnoM\Alumno\AlumnoInstance\Elements.xml" />
     <Content Include="AlumnoM\Alumno\Elements.xml" />
     <Content Include="AlumnoM\Alumno\Schema.xml" />
@@ -56,17 +55,15 @@
     <Content Include="EmpresaAlumnoM\EmpresaAlumno\Elements.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaAlumno\EmpresaAlumnoInstance\Elements.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaAlumno\Schema.xml" />
-    <Content Include="EmpresaAlumnoM\Sample.txt" />
     <Content Include="EmpresaAlumnoM\EmpresaId\Elements.xml" />
     <Content Include="EmpresaM\Elements.xml" />
-    <Content Include="EmpresaM\Sample.txt" />
     <Content Include="EmpresaM\Empresa\Elements.xml" />
     <Content Include="EmpresaM\Empresa\EmpresaInstance\Elements.xml" />
     <Content Include="EmpresaM\Empresa\Schema.xml" />
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
-    <Content Include="AlumnoM\Puntacion\Elements.xml" />
+    <Content Include="AlumnoM\Puntuacion\Elements.xml" />
     <Content Include="EmpresaM\Vacantes\Elements.xml" />
     <None Include="AlumnoM\AlumnoCt\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0d82c045-a2aa-4dfd-9c0b-de319189ba82}</SharePointProjectItemId>
@@ -136,7 +133,7 @@
     </Content>
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
-    <None Include="AlumnoM\Puntacion\SharePointProjectItem.spdata">
+    <None Include="AlumnoM\Puntuacion\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b4000ae9-50c0-4b86-a97e-fd774d6da50c}</SharePointProjectItemId>
     </None>
     <None Include="EmpresaM\Vacantes\SharePointProjectItem.spdata">
@@ -149,8 +146,12 @@
     </None>
     <Content Include="Scripts\app\app.config.js" />
     <Content Include="Scripts\app\templates\app.template.html" />
+    <Content Include="Scripts\app\templates\form-alumno.template.html" />
+    <Content Include="Scripts\app\templates\form-empresa.template.html" />
+    <Content Include="Scripts\app\templates\home.template.html" />
+    <Content Include="Scripts\app\templates\lista-alumnos.template.html" />
+    <Content Include="Scripts\app\templates\lista-empresas.template.html" />
     <Content Include="Scripts\Elements.xml" />
-    <Content Include="Scripts\App.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
@@ -188,13 +189,22 @@
       <SubType>Designer</SubType>
     </AppManifestFile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Scripts\app\models\" />
-    <Folder Include="Scripts\app\services\" />
-  </ItemGroup>
-  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\components\form-alumno.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\components\form-empresa.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\components\home.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\app.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\components\lista-alumnos.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\components\lista-empresas.component.ts" />
     <TypeScriptCompile Include="Scripts\app\main.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\alumno.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\datos-evento.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\empresa.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\alumno.service.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\data-init.service.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\empresa.service.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\log.service.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
