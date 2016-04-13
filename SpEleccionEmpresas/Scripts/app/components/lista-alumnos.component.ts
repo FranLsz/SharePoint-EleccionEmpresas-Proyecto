@@ -1,13 +1,15 @@
-﻿import {Alumno}                           from '../models/alumno'
-import {DatosEvento}                        from '../models/datos-evento'
-import {AlumnoService}                    from '../services/alumno.service'
-import {Component, OnInit, EventEmitter}    from 'angular2/core'
+﻿import {Alumno}                                 from '../models/alumno'
+import {DatosEvento}                            from '../models/datos-evento'
+import {AlumnoService}                          from '../services/alumno.service'
+import {OrderBy}                                from '../pipes/order-by.pipe.ts'
+import {Component, OnInit, EventEmitter}        from 'angular2/core'
 
 @Component({
     selector: 'lista-alumnos',
     templateUrl: BASE_URL + '/templates/lista-alumnos.template.html',
     inputs: ['listaAlumnos'],
-    outputs: ['listaAlumnosEvt']
+    outputs: ['listaAlumnosEvt'],
+    pipes: [OrderBy]
 })
 
 export class ListaAlumnosComponent {
@@ -20,6 +22,7 @@ export class ListaAlumnosComponent {
     };
 
     onSelect(alumno: Alumno) {
+        console.log("Seleccionado 1");
         this.lanzarEvento("EDITAR_ALUMNO", alumno);
     }
 

@@ -6,8 +6,11 @@
 ul {
     padding: 0px !important;
     padding: 25px;
-
 }
+
+    ul li {
+        list-style-type: none;
+    }
 
 .columnaEmpresas {
     float: left;

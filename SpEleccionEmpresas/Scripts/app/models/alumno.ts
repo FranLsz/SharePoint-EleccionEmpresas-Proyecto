@@ -34,6 +34,21 @@ export class Alumno {
         return list;
     }
 
+    public static getMayorPuntuacion(lista: Alumno[]) {
+
+        var alumno = lista[0];
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i].puntuacion > alumno.puntuacion)
+                alumno = lista[i];
+            else if (lista[i].puntuacion === alumno.puntuacion) {
+                if (lista[i].apellidos < alumno.apellidos)
+                    alumno = lista[i];
+            }
+        }
+
+        return alumno
+    }
+
     public detach() {
         return new Alumno(this.nombre, this.apellidos, this.puntuacion, this.id);
     }

@@ -1,13 +1,16 @@
-﻿import {Empresa}                           from '../models/empresa'
-import {DatosEvento}                        from '../models/datos-evento'
-import {EmpresaService}                    from '../services/empresa.service'
-import {Component, OnInit, EventEmitter}    from 'angular2/core'
+﻿import {Empresa}                                from '../models/empresa'
+import {DatosEvento}                            from '../models/datos-evento'
+import {EmpresaService}                         from '../services/empresa.service'
+import {OrderBy}                                from '../pipes/order-by.pipe.ts'
+import {AcortarTexto}                           from '../pipes/acortar-texto.pipe.ts'
+import {Component, OnInit, EventEmitter}        from 'angular2/core'
 
 @Component({
     selector: 'lista-empresas',
     templateUrl: BASE_URL + '/templates/lista-empresas.template.html',
     inputs: ['listaEmpresas'],
-    outputs: ['listaEmpresasEvt']
+    outputs: ['listaEmpresasEvt'],
+    pipes: [OrderBy, AcortarTexto]
 })
 
 export class ListaEmpresasComponent {

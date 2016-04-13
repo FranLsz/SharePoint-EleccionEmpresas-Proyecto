@@ -84,6 +84,16 @@ export class FormAlumnoComponent {
         }
     }
 
+    deleteAlumno() {
+        this._alumnoService.deleteAlumno(this.alumno).subscribe(
+            data => {
+                this.lanzarEvento("DELETE_ALUMNO", this.alumno);
+                this.reiniciarCampos();
+            },
+            err => { LogService.error("Delete Alumno: " + err._body); }
+        );
+    }
+
     private reiniciarCampos() {
         // Reset de los campos
         this.alumno = new Alumno();

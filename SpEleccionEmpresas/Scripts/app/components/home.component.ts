@@ -7,6 +7,7 @@ import {FormAlumnoComponent}                        from './form-alumno.componen
 import {FormEmpresaComponent}                       from './form-empresa.component'
 import {ListaAlumnosComponent}                      from './lista-alumnos.component'
 import {ListaEmpresasComponent}                     from './lista-empresas.component'
+import {ProcesoSeleccionComponent}                  from './proceso-seleccion.component'
 import {LogService}                                 from '../services/log.service';
 import {ROUTER_DIRECTIVES, RouteConfig, Router}     from 'angular2/router'
 import {Component, OnInit}                          from 'angular2/core'
@@ -15,7 +16,7 @@ import {Component, OnInit}                          from 'angular2/core'
     selector: 'home',
     templateUrl: BASE_URL + '/templates/home.template.html',
     providers: [EmpresaService, AlumnoService],
-    directives: [FormAlumnoComponent, FormEmpresaComponent, ListaAlumnosComponent, ListaEmpresasComponent]
+    directives: [FormAlumnoComponent, FormEmpresaComponent, ListaAlumnosComponent, ListaEmpresasComponent, ProcesoSeleccionComponent]
 })
 
 export class HomeComponent {
@@ -26,6 +27,7 @@ export class HomeComponent {
     public accionAlumnoForm: string;
     public listaEmpresas: Empresa[];
     public listaAlumnos: Alumno[];
+    public seleccionIniciada: boolean = false;
 
     constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService) {
         this.empresaForm = new Empresa();
@@ -87,59 +89,26 @@ export class HomeComponent {
                 }
                 this.accionAlumnoForm = "Nuevo alumno";
                 break;
-
-            //case "DETALLE":
-            //    this.empleadoDetalle = arg.datos;
-            //    break;
-            //case "DELETE":
-            //    var i = this.listaEmpleados.map(function (e) { return e.id; }).indexOf(arg.datos.id);
-            //    this.listaEmpleados.splice(i, 1);
-            //    break;
-
+            case "DELETE_ALUMNO":
+                var i = this.listaAlumnos.map(function (e) { return e.id; }).indexOf(arg.datos.id);
+                this.listaAlumnos.splice(i, 1);
+                this.accionAlumnoForm = "Nuevo alumno";
+                break;
+            case "DELETE_EMPRESA":
+                var i = this.listaEmpresas.map(function (e) { return e.id; }).indexOf(arg.datos.id);
+                this.listaEmpresas.splice(i, 1);
+                this.accionEmpresaForm = "Nueva empresa";
+                break;
             case "EDITAR_EMPRESA":
                 this.accionEmpresaForm = "Modificar empresa";
                 this.empresaForm = arg.datos.detach();
                 break;
             case "EDITAR_ALUMNO":
+                console.log("Seleccionado 2");
                 this.accionAlumnoForm = "Modificar alumno";
                 this.alumnoForm = arg.datos.detach();
+                console.log(this.alumnoForm);
                 break;
         }
     }
-
-
-
-
-
-    //addEmpresa(empresa: Alumno) {
-    //    this._alumnoService.addAlumno(empresa).subscribe(
-    //        data => {
-    //            var em = Alumno.fromJson(data.d);
-    //            LogService.info("Empresa añadida" + em);
-    //            em.puntuacion = 777;
-    //            this.editEmpresa(em);
-    //        },
-    //        err => { LogService.error("POST Empresa: " + err._body); }
-    //    );
-    //}
-
-    //deleteEmpresa(empresa: Alumno) {
-    //    this._alumnoService.deleteAlumno(empresa).subscribe(
-    //        data => {
-    //            LogService.info("Empresa borrada");
-    //            this.getEmpresas();
-    //        },
-    //        err => { LogService.error("Delete Empresa: " + err._body); }
-    //    );
-    //}
-
-    //editEmpresa(empresa: Alumno) {
-    //    this._alumnoService.putAlumno(empresa).subscribe(
-    //        data => {
-    //            LogService.info("Empresa editada");
-    //            this.getEmpresas();
-    //        },
-    //        err => { LogService.error("Put Empresa: " + err._body); }
-    //    );
-    //}
 }

@@ -146,11 +146,13 @@
     </None>
     <Content Include="Scripts\app\app.config.js" />
     <Content Include="Scripts\app\templates\app.template.html" />
+    <Content Include="Scripts\app\templates\detalle-empresa.template.html" />
     <Content Include="Scripts\app\templates\form-alumno.template.html" />
     <Content Include="Scripts\app\templates\form-empresa.template.html" />
     <Content Include="Scripts\app\templates\home.template.html" />
     <Content Include="Scripts\app\templates\lista-alumnos.template.html" />
     <Content Include="Scripts\app\templates\lista-empresas.template.html" />
+    <Content Include="Scripts\app\templates\proceso-seleccion.template.html" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
@@ -191,16 +193,20 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\components\detalle-empresa.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\form-alumno.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\form-empresa.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\home.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\app.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\lista-alumnos.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\lista-empresas.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\components\proceso-seleccion.component.ts" />
     <TypeScriptCompile Include="Scripts\app\main.ts" />
     <TypeScriptCompile Include="Scripts\app\models\alumno.ts" />
     <TypeScriptCompile Include="Scripts\app\models\datos-evento.ts" />
     <TypeScriptCompile Include="Scripts\app\models\empresa.ts" />
+    <TypeScriptCompile Include="Scripts\app\pipes\acortar-texto.pipe.ts" />
+    <TypeScriptCompile Include="Scripts\app\pipes\order-by.pipe.ts" />
     <TypeScriptCompile Include="Scripts\app\services\alumno.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\data-init.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\empresa.service.ts" />

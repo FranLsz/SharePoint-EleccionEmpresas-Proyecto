@@ -23,5 +23,11 @@
     <ProjectItemFile Source="app\components\form-alumno.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
     <ProjectItemFile Source="app\templates\form-empresa.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
     <ProjectItemFile Source="app\templates\form-alumno.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="app\pipes\order-by.pipe.ts" Target="Scripts\app\pipes\" Type="ElementFile" />
+    <ProjectItemFile Source="app\pipes\acortar-texto.pipe.ts" Target="Scripts\app\pipes\" Type="ElementFile" />
+    <ProjectItemFile Source="app\components\proceso-seleccion.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
+    <ProjectItemFile Source="app\templates\proceso-seleccion.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="app\components\detalle-empresa.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
+    <ProjectItemFile Source="app\templates\detalle-empresa.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -1,11 +1,16 @@
 ﻿<fieldset style="padding: 20px;">
     <legend> Empresas </legend>
 
-    <ul *ngFor="#empresa of listaEmpresas" (click)="onSelect(empresa)">
-        <li style="list-style-type: none;">
-            <strong>{{empresa.nombre}}</strong>
+    <ul *ngFor="#empresa of listaEmpresas | orderBy : 'nombre'" (click)="onSelect(empresa)">
+        <li>
+            <strong>{{empresa.nombre}} ({{empresa.vacantes}} vacantes)</strong>
+            <div>{{empresa.descripcion | acortarTexto:30}}</div>
         </li>
     </ul>
 
     <label *ngIf="listaEmpresas.length==0">-Sin empresas-</label>
 </fieldset>
+
+
+
+

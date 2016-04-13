@@ -14,6 +14,8 @@
 
 
         <br /><br /><input type="submit" value="{{btnAccion}}" [disabled]="!form.valid" />
+        <input type="button" value="Borrar" (click)="deleteAlumno()" [hidden]="accion=='Nuevo alumno'" />
+
     </form>
 
 </fieldset>

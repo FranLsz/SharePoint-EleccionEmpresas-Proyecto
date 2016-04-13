@@ -1,0 +1,12 @@
+﻿
+
+<div>
+    <br /><br />
+    <h1>PROCESO SELECCIÓN</h1>
+    <h2>Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b> con puntuación <i style="color: greenyellow">{{alumno.puntuacion}}</i>, selecciona una empresa para prácticas</h2>
+    <lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+    <detalle-empresa style="float: left" [empresa]="empresa"></detalle-empresa>
+    <input type="button" value="Seleccionar" (click)="seleccionarEmpresa()" />
+
+
+</div>

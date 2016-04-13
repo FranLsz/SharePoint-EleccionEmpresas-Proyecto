@@ -25,6 +25,7 @@
         </div><br /><br />
 
         <br /><br /><input type="submit" value="{{btnAccion}}" [disabled]="!empresaForm.form.valid" />
+        <input type="button" value="Borrar" (click)="deleteEmpresa()" [hidden]="accion=='Nueva empresa'" />
     </form>
 
 </fieldset>

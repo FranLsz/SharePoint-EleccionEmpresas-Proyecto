@@ -30,25 +30,31 @@ export class DataInitService {
         });
     }
 
+    private getRandomPuntacion() {
+        var max = 100;
+        var min = 0;
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
     // Empresas
     private empresasData: Empresa[] = [
-        new Empresa("Kabel", ".NET C# SharePoint", 1),
-        new Empresa("Plain Concepts", "C# .NET MVC", 3),
-        new Empresa("Softland", "MVC C# .NET", 2)
+        new Empresa("Kabel", ".NET C# SharePoint .NET C# SharePoint .NET C# SharePoint .NET C# SharePoint", 1),
+        new Empresa("Plain Concepts", "C# .NET MVC .NET C# SharePoint .NET C# SharePoint .NET C# SharePoint", 3),
+        new Empresa("Softland", "MVC C# .NET .NET C# SharePoint .NET C# SharePoint .NET C# SharePoint", 2)
     ];
 
     // Alumnos
     private alumnosData: Alumno[] = [
-        new Alumno("Bob", "Fill Clark", 30),
-        new Alumno("Lucy", "Sum Hey", 65),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55),
-        new Alumno("Kouk", "Bale Nill", 55)
+        new Alumno("Bob", "Fill Clark", this.getRandomPuntacion()),
+        new Alumno("Lucy", "Sum Hey", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion())
     ];
 
 }

@@ -1,9 +1,11 @@
 ﻿<fieldset style="padding: 20px;">
     <legend> Alumnos </legend>
 
-    <ul *ngFor="#alumno of listaAlumnos" (click)="onSelect(alumno)">
-        <li style="list-style-type: none;">
+    <ul *ngFor="#alumno of listaAlumnos | orderBy : '-puntuacion'  : '+apellidos'" (click)="onSelect(alumno)">
+        <li>
             <strong>{{alumno.apellidos}}, {{alumno.nombre}}</strong>
+            <br />
+            <i>Puntuación: {{alumno.puntuacion}}</i>
         </li>
     </ul>
 

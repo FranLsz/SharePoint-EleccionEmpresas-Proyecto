@@ -69,6 +69,16 @@ export class FormEmpresaComponent {
         }
     }
 
+    deleteEmpresa() {
+        this._empresaService.deleteEmpresa(this.empresa).subscribe(
+            data => {
+                this.lanzarEvento("DELETE_EMPRESA", this.empresa);
+                this.reiniciarCampos();
+            },
+            err => { LogService.error("Delete Empresa: " + err._body); }
+        );
+    }
+
     private reiniciarCampos() {
 
         //this.form['_touched'] = false;
