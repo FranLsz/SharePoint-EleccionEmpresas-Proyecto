@@ -3,7 +3,7 @@
 
     <ul *ngFor="#empresa of listaEmpresas | orderBy : 'nombre'" (click)="onSelect(empresa)">
         <li>
-            <strong>{{empresa.nombre}} ({{empresa.vacantes}} vacantes)</strong>
+            <strong>{{empresa.nombre}}</strong>
             <div>{{empresa.descripcion | acortarTexto:30}}</div>
         </li>
     </ul>

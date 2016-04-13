@@ -1,21 +1,31 @@
 ﻿<div class="homeWrapper">
     <div style="text-align: center">
-        <h1>ELEM - Elección de empresas en prácticas</h1>
+        <h1>SELEM - Selección de empresas en prácticas</h1>
     </div>
     <div class="contenido" *ngIf="!seleccionIniciada">
-        <div class="columnaEmpresas">
-            <form-empresa [empresa]="empresaForm" [accion]="accionEmpresaForm" (formEmpresaEvt)="manejarEventos($event)"></form-empresa>
-            <lista-empresas [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+
+        <div class="columnaAlumnos">
+            <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
+            <lista-alumnos [listaAlumnos]="listaAlumnos" (listaAlumnosEvt)="manejarEventos($event)"></lista-alumnos>
         </div>
 
         <div class="columnaCen">
             <input type="button" value="INICIAR SELECCIÓN" (click)="seleccionIniciada = true" />
         </div>
 
-        <div class="columnaAlumnos">
-            <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
-            <lista-alumnos [listaAlumnos]="listaAlumnos" (listaAlumnosEvt)="manejarEventos($event)"></lista-alumnos>
+        <div class="columnaEmpresas">
+            <form-empresa [empresa]="empresaForm" [accion]="accionEmpresaForm" (formEmpresaEvt)="manejarEventos($event)"></form-empresa>
+            <lista-empresas [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+
+            <div [ngSwitch]="estadoVacantes">
+                <p style="color: orange" *ngSwitchWhen="'Insuficientes'">*  Con la configuración actual,<br /> harán falta {{nivelVacantes}} vacantes <br /> para cubrir a todos los alumnos.</p>
+                <p style="color: green" *ngSwitchWhen="'Equilibrado'">* Con la configuración actual,<br /> hay el mismo número de alumnos<br /> que de vacantes.</p>
+                <p style="color: orange" *ngSwitchWhen="'Sobrantes'">*  Con la configuración actual,<br /> quedarán {{nivelVacantes}} vacantes sin rellenar al final<br /> de la selección de empresas.</p>
+            </div>
+
+
         </div>
+
     </div>
     <div class="contenido" *ngIf="seleccionIniciada">
         <proceso-seleccion [listaEmpresas]="listaEmpresas" [listaAlumnos]="listaAlumnos"></proceso-seleccion>

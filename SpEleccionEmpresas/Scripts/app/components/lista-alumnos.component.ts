@@ -21,12 +21,11 @@ export class ListaAlumnosComponent {
         this.listaAlumnosEvt = new EventEmitter();
     };
 
-    onSelect(alumno: Alumno) {
-        console.log("Seleccionado 1");
+    public onSelect(alumno: Alumno) {
         this.lanzarEvento("EDITAR_ALUMNO", alumno);
     }
 
-    lanzarEvento(orden: string, datos: any) {
+    public lanzarEvento(orden: string, datos: any) {
         this.listaAlumnosEvt.next(new DatosEvento(orden, datos));
     }
 }

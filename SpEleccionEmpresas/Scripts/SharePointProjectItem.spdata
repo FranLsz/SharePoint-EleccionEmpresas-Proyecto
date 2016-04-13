@@ -29,5 +29,7 @@
     <ProjectItemFile Source="app\templates\proceso-seleccion.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
     <ProjectItemFile Source="app\components\detalle-empresa.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
     <ProjectItemFile Source="app\templates\detalle-empresa.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="app\components\resumen-proceso.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
+    <ProjectItemFile Source="app\templates\resumen-proceso.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
   </Files>
 </ProjectItem>

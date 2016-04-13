@@ -24,11 +24,11 @@ export class FormEmpresaComponent {
         this.formEmpresaEvt = new EventEmitter();
     };
 
-    ngOnInit() {
+    public ngOnInit() {
         this.btnAccion = "Agregar";
     }
 
-    ngOnChanges(cambios) {
+    public ngOnChanges(cambios) {
         if (cambios.accion != null) {
             if (cambios.accion.currentValue == "Nueva empresa") {
                 this.btnAccion = "Agregar";
@@ -43,7 +43,7 @@ export class FormEmpresaComponent {
         }
     }
 
-    onSubmit() {
+    public onSubmit() {
         if (this.accion == "Nueva empresa") {
             this._empresaService.addEmpresa(this.empresa).subscribe(
                 data => {
@@ -53,6 +53,8 @@ export class FormEmpresaComponent {
                 err => { LogService.log("POST Empresas Error: " + err._body); }
             );
         } else {
+            this.empresa.vacantesLibres = this.empresa.vacantes;
+
             this._empresaService.putEmpresa(this.empresa).subscribe(
                 data => {
                     this.lanzarEvento("ACTUALIZAR_DE_LA_LISTA_EMPRESA", this.empresa);
@@ -69,7 +71,7 @@ export class FormEmpresaComponent {
         }
     }
 
-    deleteEmpresa() {
+    public deleteEmpresa() {
         this._empresaService.deleteEmpresa(this.empresa).subscribe(
             data => {
                 this.lanzarEvento("DELETE_EMPRESA", this.empresa);
@@ -91,7 +93,7 @@ export class FormEmpresaComponent {
         setTimeout(() => this.activo = true, 0);
     }
 
-    lanzarEvento(orden: string, datos: any) {
+    public lanzarEvento(orden: string, datos: any) {
         this.formEmpresaEvt.next(new DatosEvento(orden, datos));
     }
 }

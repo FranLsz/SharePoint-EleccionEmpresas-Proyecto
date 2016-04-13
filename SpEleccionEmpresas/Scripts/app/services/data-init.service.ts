@@ -38,23 +38,23 @@ export class DataInitService {
 
     // Empresas
     private empresasData: Empresa[] = [
-        new Empresa("Kabel", ".NET C# SharePoint .NET C# SharePoint .NET C# SharePoint .NET C# SharePoint", 1),
-        new Empresa("Plain Concepts", "C# .NET MVC .NET C# SharePoint .NET C# SharePoint .NET C# SharePoint", 3),
-        new Empresa("Softland", "MVC C# .NET .NET C# SharePoint .NET C# SharePoint .NET C# SharePoint", 2)
+        new Empresa("Kabel", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", 1),
+        new Empresa("Plain Concepts", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", 3),
+        new Empresa("Softland", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", 2)
     ];
 
     // Alumnos
     private alumnosData: Alumno[] = [
         new Alumno("Bob", "Fill Clark", this.getRandomPuntacion()),
-        new Alumno("Lucy", "Sum Hey", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion())
+        new Alumno("Lucy", "Sum Hey", this.getRandomPuntacion())//,
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
+        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion())
     ];
 
 }

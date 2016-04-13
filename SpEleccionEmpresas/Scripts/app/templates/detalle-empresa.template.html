@@ -5,7 +5,10 @@
         <h1>{{empresa.nombre}}</h1>
         <h3>{{empresa.descripcion}}</h3>
         <br /><br />
-        <h2>{{empresa.vacantes}} vacantes</h2>
+        <h2>{{empresa.vacantes}} vacantes, <b [class.vacantesLibres]="empresa.vacantesLibres > 0" [class.vacantesOcupadas]="empresa.vacantesLibres <= 0">{{empresa.vacantesLibres}} libres</b></h2>
+        <br/><br/>
+        <input type="button" value="{{btnSeleccionar}}" (click)="seleccionarEmpresa()" [disabled]="empresa.vacantesLibres <= 0" /> <span *ngIf="confirmarSeleccion">¿Confirmar selección?</span>
+
     </fieldset>
 
 </div>

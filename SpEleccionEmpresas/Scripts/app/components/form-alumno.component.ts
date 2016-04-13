@@ -32,17 +32,17 @@ export class FormAlumnoComponent {
 
     };
 
-    comprobarSiEsNumero(fieldControl: Control) {
+    public comprobarSiEsNumero(fieldControl: Control) {
         if (!isNaN(fieldControl.value))
             return null;
         return { noNumero: false };
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.btnAccion = "Agregar";
     }
 
-    ngOnChanges(cambios) {
+    public ngOnChanges(cambios) {
         if (cambios.accion != null) {
             if (cambios.accion.currentValue == "Nuevo alumno") {
                 this.btnAccion = "Agregar";
@@ -57,7 +57,7 @@ export class FormAlumnoComponent {
         }
     }
 
-    onSubmit() {
+    public onSubmit() {
         if (this.accion == "Nuevo alumno") {
             this._alumnoService.addAlumno(this.alumno).subscribe(
                 data => {
@@ -84,7 +84,7 @@ export class FormAlumnoComponent {
         }
     }
 
-    deleteAlumno() {
+     public deleteAlumno() {
         this._alumnoService.deleteAlumno(this.alumno).subscribe(
             data => {
                 this.lanzarEvento("DELETE_ALUMNO", this.alumno);
@@ -101,7 +101,7 @@ export class FormAlumnoComponent {
         setTimeout(() => this.activo = true, 0);
     }
 
-    lanzarEvento(orden: string, datos: any) {
+    public lanzarEvento(orden: string, datos: any) {
         this.formAlumnoEvt.next(new DatosEvento(orden, datos));
     }
 }

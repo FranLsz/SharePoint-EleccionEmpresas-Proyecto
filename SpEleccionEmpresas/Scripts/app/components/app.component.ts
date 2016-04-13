@@ -23,7 +23,7 @@ export class AppComponent {
 
     constructor(private router: Router, private _dataInitService: DataInitService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
 
         // Si es la primera ejecucion del add in, cargamos datos en las listas
         if (localStorage.getItem("DATOS_INICIALIZADOS") == null) {

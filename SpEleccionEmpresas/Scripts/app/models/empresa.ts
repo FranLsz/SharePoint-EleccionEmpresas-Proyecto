@@ -6,6 +6,7 @@ export class Empresa {
     public nombre: string;
     public descripcion: string;
     public vacantes: number;
+    public vacantesLibres: number;
     public alumnos: Alumno[];
 
     constructor();
@@ -19,6 +20,7 @@ export class Empresa {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.vacantes = vacantes;
+            this.vacantesLibres = vacantes;
         }
     }
 

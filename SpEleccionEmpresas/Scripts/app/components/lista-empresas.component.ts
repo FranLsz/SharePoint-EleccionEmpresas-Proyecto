@@ -22,11 +22,11 @@ export class ListaEmpresasComponent {
         this.listaEmpresasEvt = new EventEmitter();
     };
 
-    onSelect(empresa: Empresa) {
-        this.lanzarEvento("EDITAR_EMPRESA", empresa);
+    public onSelect(empresa: Empresa) {
+        this.lanzarEvento("EDITAR_DETALLE_EMPRESA", empresa);
     }
 
-    lanzarEvento(orden: string, datos: any) {
+    public lanzarEvento(orden: string, datos: any) {
         this.listaEmpresasEvt.next(new DatosEvento(orden, datos));
     }
 }

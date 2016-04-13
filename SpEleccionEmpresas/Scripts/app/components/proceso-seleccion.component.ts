@@ -5,6 +5,7 @@ import {EmpresaService}                             from '../services/empresa.se
 import {AlumnoService}                              from '../services/alumno.service'
 import {ListaEmpresasComponent}                     from './lista-empresas.component'
 import {DetalleEmpresaComponent}                    from './detalle-empresa.component'
+import {ResumenProcesoComponent}                    from './resumen-proceso.component'
 import {LogService}                                 from '../services/log.service';
 import {Component, OnInit}                          from 'angular2/core'
 
@@ -12,7 +13,7 @@ import {Component, OnInit}                          from 'angular2/core'
     selector: 'proceso-seleccion',
     templateUrl: BASE_URL + '/templates/proceso-seleccion.template.html',
     inputs: ['listaEmpresas', 'listaAlumnos'],
-    directives: [ListaEmpresasComponent, DetalleEmpresaComponent],
+    directives: [ListaEmpresasComponent, DetalleEmpresaComponent, ResumenProcesoComponent],
     providers: [EmpresaService, AlumnoService]
 })
 
@@ -24,25 +25,29 @@ export class ProcesoSeleccionComponent {
     public listaAlumnosFinal: Alumno[];
     public empresa: Empresa;
     public alumno: Alumno;
+    public finalizado: boolean = false;
 
     constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService) {
-        this.empresa = new Empresa();
+        //this.empresa = new Empresa();
         this.alumno = new Alumno();
         this.listaAlumnosFinal = [];
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnos);
+        console.log(this.empresa);
     }
 
-    seleccionarEmpresa() {
-        //TODO: meter el boton seleccionar en el template de detalle
-        //TODO: recalcular vacantes una vez se selecciona una empresa
-        //TODO: mostrar resultado de selecciones al terminar
+    public seleccionarEmpresa() {
+        //TODO: añadir descargar en json o excel
+        //TODO: añadir width fijos
+        //TODO: añadir cuadro de busqueda en listas
         //TODO: Guardar el estado de la seleccion hasta que termine (usar lista EmpresaAlumno)
+        //TODO: arreglar validación y reset en formularios
 
 
         var alumno = this.alumno;
+        var vacantes = false;
         alumno.empresa = this.empresa;
 
         this.listaAlumnosFinal.push(alumno);
@@ -50,15 +55,44 @@ export class ProcesoSeleccionComponent {
         var i = this.listaAlumnos.map(function (e) { return e.id; }).indexOf(alumno.id);
         this.listaAlumnos.splice(i, 1);
 
-        this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnos);
+        this.empresa.vacantesLibres--;
+
+        // Actualizamos las vacantes de la empresa y comprobamos si quedan vacantes libres en general
+        for (var i = 0; i < this.listaEmpresas.length; i++) {
+
+            if (this.listaEmpresas[i].id == this.empresa.id)
+                this.listaEmpresas[i] = this.empresa;
+
+            //si quedan vacantes
+            if (this.listaEmpresas[i].vacantesLibres > 0)
+                vacantes = true;
+        }
+
+
+        // si hay un siguiente alumno
+        if (this.listaAlumnos.length > 0) {
+
+            // si no quedan vacantes
+            if (!vacantes) {
+                this.finalizado = true;
+
+            } else {
+                // si quedan buscamos otro alumno
+                this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnos);
+                this.empresa = null;
+            }
+        }
+        else
+            this.finalizado = true;
     }
 
-    manejarEventos(arg: DatosEvento) {
+    public manejarEventos(arg: DatosEvento) {
         switch (arg.orden) {
-            case "EDITAR_EMPRESA":
-                console.log("SELECCIONADA 2");
+            case "EDITAR_DETALLE_EMPRESA":
                 this.empresa = arg.datos;
-                console.log(this.empresa);
+                break;
+            case "SELECCIONAR_EMPRESA":
+                this.seleccionarEmpresa();
                 break;
         }
     }

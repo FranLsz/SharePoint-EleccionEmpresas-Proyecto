@@ -1,12 +1,17 @@
 ﻿
 
-<div>
+<div *ngIf="!finalizado">
     <br /><br />
-    <h1>PROCESO SELECCIÓN</h1>
-    <h2>Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b> con puntuación <i style="color: greenyellow">{{alumno.puntuacion}}</i>, selecciona una empresa para prácticas</h2>
+    <h1>PROCESO DE SELECCIÓN</h1>
+    <br /><br />
+    <h2>
+        Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b>, con una puntuación de <i style="color: greenyellow">{{alumno.puntuacion}}</i>, seleccione una empresa para prácticas
+    </h2>
+    <br /><br />
     <lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
-    <detalle-empresa style="float: left" [empresa]="empresa"></detalle-empresa>
-    <input type="button" value="Seleccionar" (click)="seleccionarEmpresa()" />
+    <detalle-empresa style="float: left" [empresa]="empresa" (detalleEmpresaEvt)="manejarEventos($event)"></detalle-empresa>
+</div>
 
-
+<div *ngIf="finalizado">
+    <resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnos" [listaEmpresas]="listaEmpresas"></resumen-proceso>
 </div>

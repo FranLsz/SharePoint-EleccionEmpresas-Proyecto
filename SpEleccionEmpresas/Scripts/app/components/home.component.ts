@@ -27,7 +27,8 @@ export class HomeComponent {
     public accionAlumnoForm: string;
     public listaEmpresas: Empresa[];
     public listaAlumnos: Alumno[];
-    public seleccionIniciada: boolean = false;
+    public estadoVacantes: string;
+    public nivelVacantes: number;
 
     constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService) {
         this.empresaForm = new Empresa();
@@ -36,35 +37,62 @@ export class HomeComponent {
         this.listaAlumnos = [];
     };
 
-    ngOnInit() {
+    public ngOnInit() {
         this.getEmpresas();
         this.getAlumnos();
-
         this.accionEmpresaForm = "Nueva empresa";
         this.accionAlumnoForm = "Nuevo alumno";
+
+        document.getElementById("cargando").style.display = 'none';
+        document.getElementsByTagName("app-main")[0].style.display = 'block';
     }
 
-    getEmpresas() {
+    public getEmpresas() {
         this._empresaService.getEmpresas().subscribe(
             data => {
                 LogService.info("Lista de empresas cargada");
                 this.listaEmpresas = Empresa.fromJsonList(data.d.results);
+                this.calcularVacantes();
             },
             err => { LogService.error("GET Empresas: " + err._body); }
         );
     }
 
-    getAlumnos() {
+    public getAlumnos() {
         this._alumnoService.getAlumnos().subscribe(
             data => {
                 LogService.info("Lista de alumnos cargada");
                 this.listaAlumnos = Alumno.fromJsonList(data.d.results);
+                this.calcularVacantes();
             },
             err => { LogService.error("GET Alumnos: " + err._body); }
         );
     }
 
-    manejarEventos(arg: DatosEvento) {
+    public calcularVacantes() {
+        this.nivelVacantes = 0;
+
+        var numAlumnos = this.listaAlumnos.length;
+        var numVacantes = 0;
+
+        for (var i = 0; i < this.listaEmpresas.length; i++)
+            numVacantes += parseInt(this.listaEmpresas[i].vacantes.toString());
+
+
+        if (numAlumnos > numVacantes) {
+            this.nivelVacantes = numAlumnos - numVacantes;
+            this.estadoVacantes = "Insuficientes";
+        }
+        else if (numAlumnos == numVacantes) {
+            this.estadoVacantes = "Equilibrado";
+        }
+        else {
+            this.nivelVacantes = numVacantes - numAlumnos;
+            this.estadoVacantes = "Sobrantes";
+        }
+    }
+
+    public manejarEventos(arg: DatosEvento) {
         switch (arg.orden) {
             case "AGREGAR_A_LISTA_EMPRESA":
                 this.listaEmpresas.push(arg.datos);
@@ -99,16 +127,16 @@ export class HomeComponent {
                 this.listaEmpresas.splice(i, 1);
                 this.accionEmpresaForm = "Nueva empresa";
                 break;
-            case "EDITAR_EMPRESA":
+            case "EDITAR_DETALLE_EMPRESA":
                 this.accionEmpresaForm = "Modificar empresa";
                 this.empresaForm = arg.datos.detach();
                 break;
             case "EDITAR_ALUMNO":
-                console.log("Seleccionado 2");
                 this.accionAlumnoForm = "Modificar alumno";
                 this.alumnoForm = arg.datos.detach();
-                console.log(this.alumnoForm);
                 break;
         }
+
+        this.calcularVacantes();
     }
 }

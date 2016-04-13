@@ -1,0 +1,54 @@
+﻿
+<h1>Proceso de selección de empresas finalizado</h1>
+<h1 style="text-align: center">RESULTADOS</h1><br /><br />
+<table class="resultadosBuenos">
+    <thead>
+        <tr>
+            <td>Alumno</td>
+            <td>Empresa</td>
+        </tr>
+    </thead>
+    <tbody *ngFor="#alumno of listaAlumnosFinal">
+        <tr>
+            <td>{{alumno.nombre}} </td>
+            <td>{{alumno.empresa.nombre}} </td>
+        </tr>
+    </tbody>
+
+</table>
+<br />
+<a id="descargarJson">Descargar en formato JSON</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a id="descargarCsv">Descargar en formato CSV</a>
+<br /><br /><br />
+
+<table class="resultadosMalos" *ngIf="listaAlumnosRestantes.length > 0">
+    <thead>
+        <tr>
+            <td>Alumnos sin vacantes</td>
+        </tr>
+    </thead>
+    <tbody *ngFor="#alumno of listaAlumnosRestantes">
+        <tr>
+            <td>{{alumno.nombre}} </td>
+        </tr>
+    </tbody>
+</table>
+
+<br /><br /><br />
+
+<!--TEMPORAL-->
+<table class="resultadosMalos" *ngIf="listaEmpresas.length < 0">
+
+    <thead>
+        <tr>
+            <td>Empresas sin alumnos</td>
+        </tr>
+    </thead>
+    <tbody *ngFor="#empresa of listaEmpresas">
+        <tr>
+            <td>{{empresa.nombre}} </td>
+        </tr>
+    </tbody>
+
+</table>
