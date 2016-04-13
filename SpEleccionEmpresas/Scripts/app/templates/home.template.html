@@ -1,19 +1,19 @@
 ﻿<div class="homeWrapper">
     <div style="text-align: center">
-        <h1>SELEM - Selección de empresas en prácticas</h1>
+        <h1>SELEM - Selección de empresas para prácticas</h1>
     </div>
     <div class="contenido" *ngIf="!seleccionIniciada">
 
-        <div class="columnaAlumnos">
+        <div class="columnaAlumnos w-315">
             <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
             <lista-alumnos [listaAlumnos]="listaAlumnos" (listaAlumnosEvt)="manejarEventos($event)"></lista-alumnos>
         </div>
 
-        <div class="columnaCen">
+        <div class="columnaCen" style="margin-top: 300px">
             <input type="button" value="INICIAR SELECCIÓN" (click)="seleccionIniciada = true" />
         </div>
 
-        <div class="columnaEmpresas">
+        <div class="columnaEmpresas w-315">
             <form-empresa [empresa]="empresaForm" [accion]="accionEmpresaForm" (formEmpresaEvt)="manejarEventos($event)"></form-empresa>
             <lista-empresas [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
 

@@ -1,11 +1,12 @@
 ﻿<fieldset style="padding: 20px;">
     <legend> Alumnos </legend>
-
-    <ul *ngFor="#alumno of listaAlumnos | orderBy : '-puntuacion'  : '+apellidos'" (click)="onSelect(alumno)">
-        <li>
+    Buscar: <input placeholder="Nombre, apellido..." [(ngModel)]="buscador" />
+    <ul>
+        <li *ngFor="#alumno of listaAlumnos | orderBy : '-puntuacion'  : '+apellidos' | filtrar:buscador" (click)="onSelect(alumno)">
             <strong>{{alumno.apellidos}}, {{alumno.nombre}}</strong>
             <br />
             <i>Puntuación: {{alumno.puntuacion}}</i>
+            <br /><br />
         </li>
     </ul>
 

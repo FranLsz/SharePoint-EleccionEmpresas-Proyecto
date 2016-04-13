@@ -28,7 +28,6 @@ export class ProcesoSeleccionComponent {
     public finalizado: boolean = false;
 
     constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService) {
-        //this.empresa = new Empresa();
         this.alumno = new Alumno();
         this.listaAlumnosFinal = [];
     }
@@ -39,12 +38,7 @@ export class ProcesoSeleccionComponent {
     }
 
     public seleccionarEmpresa() {
-        //TODO: añadir descargar en json o excel
-        //TODO: añadir width fijos
-        //TODO: añadir cuadro de busqueda en listas
         //TODO: Guardar el estado de la seleccion hasta que termine (usar lista EmpresaAlumno)
-        //TODO: arreglar validación y reset en formularios
-
 
         var alumno = this.alumno;
         var vacantes = false;

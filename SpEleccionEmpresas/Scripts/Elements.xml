@@ -30,5 +30,6 @@
     <File Path="Scripts\app\templates\detalle-empresa.template.html" Url="Scripts/app/templates/detalle-empresa.template.html" ReplaceContent="TRUE" />
     <File Path="Scripts\app\components\resumen-proceso.component.ts" Url="Scripts/app/components/resumen-proceso.component.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\templates\resumen-proceso.template.html" Url="Scripts/app/templates/resumen-proceso.template.html" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\pipes\filtrar.pipe.ts" Url="Scripts/app/pipes/filtrar.pipe.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

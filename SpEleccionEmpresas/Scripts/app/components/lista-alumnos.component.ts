@@ -2,6 +2,7 @@
 import {DatosEvento}                            from '../models/datos-evento'
 import {AlumnoService}                          from '../services/alumno.service'
 import {OrderBy}                                from '../pipes/order-by.pipe.ts'
+import {Filtrar}                                from '../pipes/filtrar.pipe.ts'
 import {Component, OnInit, EventEmitter}        from 'angular2/core'
 
 @Component({
@@ -9,13 +10,14 @@ import {Component, OnInit, EventEmitter}        from 'angular2/core'
     templateUrl: BASE_URL + '/templates/lista-alumnos.template.html',
     inputs: ['listaAlumnos'],
     outputs: ['listaAlumnosEvt'],
-    pipes: [OrderBy]
+    pipes: [OrderBy, Filtrar]
 })
 
 export class ListaAlumnosComponent {
     public listaAlumnos: Alumno[];
     public alumno: Alumno;
     public listaAlumnosEvt: EventEmitter;
+    public buscador: string = '';
 
     constructor(private _alumnoService: AlumnoService) {
         this.listaAlumnosEvt = new EventEmitter();

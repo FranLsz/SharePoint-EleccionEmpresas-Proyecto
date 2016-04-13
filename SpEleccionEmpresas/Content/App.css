@@ -89,9 +89,17 @@ ul {
 
 
 .vacantesLibres {
-    color: greenyellow;
+    color: green;
 }
 
 .vacantesOcupadas {
     color: red;
+}
+
+.w-500 {
+    width: 485px;
+}
+
+.w-315 {
+    width: 315px;
 }

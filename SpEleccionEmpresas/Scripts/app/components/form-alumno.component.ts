@@ -19,15 +19,24 @@ export class FormAlumnoComponent {
     public alumno: Alumno;
     public formAlumnoEvt: EventEmitter;
     public activo: boolean = true;
+
+    // Form
     public form: ControlGroup;
+    public nombre: Control;
+    public apellidos: Control;
+    public puntuacion: Control;
 
     constructor(private _alumnoService: AlumnoService, private builder: FormBuilder) {
         this.formAlumnoEvt = new EventEmitter();
 
+        this.nombre = new Control('', Validators.required);
+        this.apellidos = new Control('', Validators.required);
+        this.puntuacion = new Control('', Validators.compose([Validators.required, this.comprobarSiEsNumero]));
+
         this.form = builder.group({
-            "nombre": ['', Validators.required],
-            "apellidos": ['', Validators.required],
-            "puntuacion": ['', Validators.compose([Validators.required, this.comprobarSiEsNumero])]
+            "nombre": this.nombre,
+            "apellidos": this.apellidos,
+            "puntuacion": this.puntuacion
         });
 
     };
@@ -84,7 +93,7 @@ export class FormAlumnoComponent {
         }
     }
 
-     public deleteAlumno() {
+    public deleteAlumno() {
         this._alumnoService.deleteAlumno(this.alumno).subscribe(
             data => {
                 this.lanzarEvento("DELETE_ALUMNO", this.alumno);
@@ -97,8 +106,21 @@ export class FormAlumnoComponent {
     private reiniciarCampos() {
         // Reset de los campos
         this.alumno = new Alumno();
-        this.activo = false;
-        setTimeout(() => this.activo = true, 0);
+
+        this.form['_touched'] = false;
+        this.form['_pristine'] = true;
+
+        this.nombre['_touched'] = false;
+        this.nombre['_pristine'] = true;
+        this.nombre['_valid'] = true;
+
+        this.apellidos['_touched'] = false;
+        this.apellidos['_pristine'] = true;
+        this.apellidos['_valid'] = true;
+
+        this.puntuacion['_touched'] = false;
+        this.puntuacion['_pristine'] = true;
+        this.puntuacion['_valid'] = true;
     }
 
     public lanzarEvento(orden: string, datos: any) {

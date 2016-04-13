@@ -1,10 +1,11 @@
 ﻿<fieldset style="padding: 20px;">
     <legend> Empresas </legend>
-
-    <ul *ngFor="#empresa of listaEmpresas | orderBy : 'nombre'" (click)="onSelect(empresa)">
-        <li>
+    Buscar: <input placeholder="Nombre, descripción..." [(ngModel)]="buscador" />
+    <ul>
+        <li *ngFor="#empresa of listaEmpresas | orderBy : 'nombre' | filtrar:buscador" (click)="onSelect(empresa)">
             <strong>{{empresa.nombre}}</strong>
             <div>{{empresa.descripcion | acortarTexto:30}}</div>
+            <br />
         </li>
     </ul>
 

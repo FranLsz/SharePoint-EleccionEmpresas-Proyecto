@@ -8,8 +8,8 @@
             <td>Empresa</td>
         </tr>
     </thead>
-    <tbody *ngFor="#alumno of listaAlumnosFinal">
-        <tr>
+    <tbody>
+        <tr *ngFor="#alumno of listaAlumnosFinal">
             <td>{{alumno.nombre}} </td>
             <td>{{alumno.empresa.nombre}} </td>
         </tr>
@@ -28,8 +28,8 @@
             <td>Alumnos sin vacantes</td>
         </tr>
     </thead>
-    <tbody *ngFor="#alumno of listaAlumnosRestantes">
-        <tr>
+    <tbody>
+        <tr *ngFor="#alumno of listaAlumnosRestantes">
             <td>{{alumno.nombre}} </td>
         </tr>
     </tbody>

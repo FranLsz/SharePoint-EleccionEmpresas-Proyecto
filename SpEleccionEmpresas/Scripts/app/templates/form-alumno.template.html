@@ -3,15 +3,22 @@
 
     <form (ngSubmit)="onSubmit()" [ngFormModel]="form">
 
+        <!--Nombre y apellidos-->
         <h2>Nombre y apellidos</h2>
         <input [(ngModel)]="alumno.nombre" ngControl="nombre" placeholder="Nombre" type="text">
-        <br />
+        <div [hidden]="nombre.valid || nombre.pristine" style="color: red">
+            Nombre requerido
+        </div>
         <input [(ngModel)]="alumno.apellidos" ngControl="apellidos" placeholder="Apellidos" type="text" style="margin-top: 5px">
-
-
+        <div [hidden]="apellidos.valid || apellidos.pristine" style="color: red">
+            Apellido requerido
+        </div>
+        <!--Puntuación-->
         <h2>Puntuación</h2>
         <input [(ngModel)]="alumno.puntuacion" ngControl="puntuacion" placeholder="25, 43, 86..." type="text">
-
+        <div [hidden]="puntuacion.valid || puntuacion.pristine" style="color: red">
+            Puntuación requerida
+        </div>
 
         <br /><br /><input type="submit" value="{{btnAccion}}" [disabled]="!form.valid" />
         <input type="button" value="Borrar" (click)="deleteAlumno()" [hidden]="accion=='Nuevo alumno'" />

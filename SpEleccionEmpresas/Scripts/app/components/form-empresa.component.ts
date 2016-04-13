@@ -20,9 +20,31 @@ export class FormEmpresaComponent {
     public formEmpresaEvt: EventEmitter;
     public activo: boolean = true;
 
+    // Form
+    public form: ControlGroup;
+    public nombre: Control;
+    public descripcion: Control;
+    public vacantes: Control;
+
     constructor(private _empresaService: EmpresaService, private builder: FormBuilder) {
         this.formEmpresaEvt = new EventEmitter();
+
+        this.nombre = new Control('', Validators.required);
+        this.descripcion = new Control('', Validators.required);
+        this.vacantes = new Control('', Validators.compose([Validators.required, this.comprobarSiEsNumero]));
+
+        this.form = builder.group({
+            "nombre": this.nombre,
+            "descripcion": this.descripcion,
+            "vacantes": this.vacantes
+        });
     };
+
+    public comprobarSiEsNumero(fieldControl: Control) {
+        if (!isNaN(fieldControl.value))
+            return null;
+        return { noNumero: false };
+    }
 
     public ngOnInit() {
         this.btnAccion = "Agregar";
@@ -82,15 +104,23 @@ export class FormEmpresaComponent {
     }
 
     private reiniciarCampos() {
-
-        //this.form['_touched'] = false;
-        //this.control['_touched'] = false;
-
-
         // Reset de los campos
         this.empresa = new Empresa();
-        this.activo = false;
-        setTimeout(() => this.activo = true, 0);
+
+        this.form['_touched'] = false;
+        this.form['_pristine'] = true;
+
+        this.nombre['_touched'] = false;
+        this.nombre['_pristine'] = true;
+        this.nombre['_valid'] = true;
+
+        this.descripcion['_touched'] = false;
+        this.descripcion['_pristine'] = true;
+        this.descripcion['_valid'] = true;
+
+        this.vacantes['_touched'] = false;
+        this.vacantes['_pristine'] = true;
+        this.vacantes['_valid'] = true;
     }
 
     public lanzarEvento(orden: string, datos: any) {
