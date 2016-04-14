@@ -13,5 +13,5 @@
 </div>
 
 <div *ngIf="finalizado">
-    <resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnos" [listaEmpresas]="listaEmpresas"></resumen-proceso>
+    <resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnosAux" [listaEmpresas]="listaEmpresasAux" (resumenProcesoEvt)="manejarEventos($event)"></resumen-proceso>
 </div>

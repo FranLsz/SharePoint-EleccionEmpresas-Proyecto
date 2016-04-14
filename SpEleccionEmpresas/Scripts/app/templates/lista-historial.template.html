@@ -1,0 +1,42 @@
+﻿<h1 style="text-align: center">Historial</h1>
+<br /><br /><br />
+<div>
+    <div style="float: left">
+        <h2><b>Historial de procesos de selección</b></h2><br />
+        <table class="resultadosBuenos">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Fecha</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#historial of listaHistorial" (click)="onSelect(historial)">
+                    <td>{{historial.id}}</td>
+                    <td>{{historial.fecha}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div style="width: 500px; margin-left: 35px; float: left" *ngIf="historial">
+        <h2><b>Fecha de registro: {{historial.fecha}}</b></h2><br />
+        <table class="resultadosBuenos" style="width: 100%">
+            <thead>
+                <tr>
+                    <td>Alumno</td>
+                    <td>Empresa</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#alumno of historial.alumnos">
+                    <td>{{alumno.nombre}} {{alumno.apellidos}} <i>({{alumno.puntuacion}})</i></td>
+                    <td>{{alumno.empresa.nombre}} </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

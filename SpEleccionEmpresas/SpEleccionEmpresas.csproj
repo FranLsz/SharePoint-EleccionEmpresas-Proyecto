@@ -50,12 +50,14 @@
     <Content Include="AlumnoM\Alumno\Elements.xml" />
     <Content Include="AlumnoM\Alumno\Schema.xml" />
     <Content Include="AlumnoM\Apellidos\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\DatosJson\Elements.xml" />
     <Content Include="EmpresaAlumnoM\Elements.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaAlumnoCt\Elements.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaAlumno\Elements.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaAlumno\EmpresaAlumnoInstance\Elements.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaAlumno\Schema.xml" />
     <Content Include="EmpresaAlumnoM\EmpresaId\Elements.xml" />
+    <Content Include="EmpresaAlumnoM\Fecha\Elements.xml" />
     <Content Include="EmpresaM\Elements.xml" />
     <Content Include="EmpresaM\Empresa\Elements.xml" />
     <Content Include="EmpresaM\Empresa\EmpresaInstance\Elements.xml" />
@@ -83,6 +85,9 @@
     <None Include="AlumnoM\Apellidos\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2478f0d9-f84e-4609-a8f2-3bea00a9c368}</SharePointProjectItemId>
     </None>
+    <None Include="EmpresaAlumnoM\DatosJson\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4492b8a8-7e57-43be-aad5-6673d314aa81}</SharePointProjectItemId>
+    </None>
     <None Include="EmpresaAlumnoM\EmpresaAlumnoCt\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{04b1ed59-8e4b-4a2a-9841-75027dfa960a}</SharePointProjectItemId>
     </None>
@@ -91,6 +96,9 @@
     </None>
     <None Include="EmpresaAlumnoM\EmpresaAlumno\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{710f7e4f-42e7-4a99-88eb-8c9d72d664f7}</SharePointProjectItemId>
+    </None>
+    <None Include="EmpresaAlumnoM\Fecha\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ea37c4a2-1776-4677-a336-9952da7d3f31}</SharePointProjectItemId>
     </None>
     <None Include="EmpresaAlumnoM\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4f93885c-f8f3-49ad-8a0e-d687ccdef1a1}</SharePointProjectItemId>
@@ -155,6 +163,7 @@
     <Content Include="Scripts\app\templates\home.template.html" />
     <Content Include="Scripts\app\templates\lista-alumnos.template.html" />
     <Content Include="Scripts\app\templates\lista-empresas.template.html" />
+    <Content Include="Scripts\app\templates\lista-historial.template.html" />
     <Content Include="Scripts\app\templates\proceso-seleccion.template.html" />
     <Content Include="Scripts\app\templates\resumen-proceso.template.html" />
     <Content Include="Scripts\Elements.xml" />
@@ -201,12 +210,14 @@
     <TypeScriptCompile Include="Scripts\app\components\app.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\lista-alumnos.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\lista-empresas.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\components\lista-historial.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\proceso-seleccion.component.ts" />
     <TypeScriptCompile Include="Scripts\app\components\resumen-proceso.component.ts" />
     <TypeScriptCompile Include="Scripts\app\main.ts" />
     <TypeScriptCompile Include="Scripts\app\models\alumno.ts" />
     <TypeScriptCompile Include="Scripts\app\models\datos-evento.ts" />
     <TypeScriptCompile Include="Scripts\app\models\empresa.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\historial.ts" />
     <TypeScriptCompile Include="Scripts\app\pipes\acortar-texto.pipe.ts" />
     <TypeScriptCompile Include="Scripts\app\pipes\filtrar.pipe.ts" />
     <TypeScriptCompile Include="Scripts\app\pipes\order-by.pipe.ts" />

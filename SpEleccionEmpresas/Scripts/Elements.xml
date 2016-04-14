@@ -31,5 +31,8 @@
     <File Path="Scripts\app\components\resumen-proceso.component.ts" Url="Scripts/app/components/resumen-proceso.component.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\templates\resumen-proceso.template.html" Url="Scripts/app/templates/resumen-proceso.template.html" ReplaceContent="TRUE" />
     <File Path="Scripts\app\pipes\filtrar.pipe.ts" Url="Scripts/app/pipes/filtrar.pipe.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\models\historial.ts" Url="Scripts/app/models/historial.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\components\lista-historial.component.ts" Url="Scripts/app/components/lista-historial.component.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\templates\lista-historial.template.html" Url="Scripts/app/templates/lista-historial.template.html" ReplaceContent="TRUE" />
   </Module>
 </Elements>

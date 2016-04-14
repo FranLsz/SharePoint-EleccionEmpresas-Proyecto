@@ -3,8 +3,8 @@
   <!-- Parent ContentType: Elemento (0x01) -->
   <ContentType ID="0x0100A2878C95490F474CBBBD57173BF52C0D" Name="EmpresaAlumnoCt" Group="Custom Content Types" Description="My Content Type" Inherits="TRUE" Version="0">
     <FieldRefs>
-      <FieldRef ID="{2aa34eb1-f589-4006-89b2-9390f6b4a469}" DisplayName="Empresa Id" Required="TRUE" Name="EmpresaId" />
-      <FieldRef ID="{995e7220-e87d-45d2-89b2-9145ec38f416}" DisplayName="Alumno Id" Required="TRUE" Name="AlumnoId" />
+      <FieldRef ID="{4f2b74dc-6810-45dd-b588-378c83c479f5}" DisplayName="DatosJson" Required="TRUE" Name="DatosJson" />
+      <FieldRef ID="{dd6ab2f8-c150-4113-800a-be2f287f2f3d}" DisplayName="Fecha" Required="TRUE" Name="Fecha" />
     </FieldRefs>
   </ContentType>
 </Elements>

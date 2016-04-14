@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
+  <Field
+       ID="{dd6ab2f8-c150-4113-800a-be2f287f2f3d}"
+       Name="Fecha"
+       DisplayName="Fecha"
+       Type="DateTime"
+       Required="FALSE"
+       Group="Custom Site Columns">
+  </Field>
+</Elements>

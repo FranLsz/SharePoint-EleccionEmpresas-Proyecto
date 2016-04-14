@@ -1,4 +1,5 @@
 ﻿import {Alumno}                     from '../models/alumno';
+import {Historial}                  from '../models/historial'
 import 'rxjs/add/operator/map';
 import {Http, Response, Headers}    from 'angular2/http';
 import {Injectable}                 from 'angular2/core';
@@ -74,5 +75,24 @@ export class AlumnoService {
     // DELETE
     deleteAlumno(alumno: Alumno) {
         return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('Alumno')/items(" + alumno.id + ")", null, { headers: this.setHeaders("DELETE") });
+    }
+
+    // GET HISTORICO
+    getHistorial() {
+        return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items", { headers: this.setHeaders() }).map((res: Response) => res.json());
+    }
+
+    // POST HISTORICO
+    addHistorial(historial: Historial) {
+        console.log(historial);
+        
+        var obj = {
+            '__metadata': { 'type': 'SP.Data.EmpresaAlumnoListItem' },
+            'DatosJson': historial.datosJson,
+            'Fecha': historial.fecha,
+        };
+
+        var data = JSON.stringify(obj);
+        return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items", data, { headers: this.setHeaders("POST") }).map((res: Response) => res.json());
     }
 }

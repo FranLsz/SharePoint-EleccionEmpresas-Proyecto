@@ -4,10 +4,10 @@
     <ContentTypes>
       
       
-    <ContentType ID="0x0100A2878C95490F474CBBBD57173BF52C0D" Name="EmpresaAlumnoCt" Group="Custom Content Types" Description="My Content Type" Inherits="TRUE" Version="0"><FieldRefs><FieldRef ID="{2aa34eb1-f589-4006-89b2-9390f6b4a469}" DisplayName="Empresa Id" Required="TRUE" Name="EmpresaId" /><FieldRef ID="{995e7220-e87d-45d2-89b2-9145ec38f416}" DisplayName="Alumno Id" Required="TRUE" Name="AlumnoId" /></FieldRefs></ContentType></ContentTypes>
+    <ContentType ID="0x0100415063edfaa544adb0841b634c9933c5" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{4f2b74dc-6810-45dd-b588-378c83c479f5}" Name="DatosJson" /><FieldRef ID="{dd6ab2f8-c150-4113-800a-be2f287f2f3d}" Name="Fecha" /></FieldRefs></ContentType><ContentType ID="0x0100A2878C95490F474CBBBD57173BF52C0D" Name="EmpresaAlumnoCt" Group="Custom Content Types" Description="My Content Type" Inherits="TRUE" Version="0"><FieldRefs><FieldRef ID="{2aa34eb1-f589-4006-89b2-9390f6b4a469}" DisplayName="Empresa Id" Required="TRUE" Name="EmpresaId" /><FieldRef ID="{995e7220-e87d-45d2-89b2-9145ec38f416}" DisplayName="Alumno Id" Required="TRUE" Name="AlumnoId" /></FieldRefs></ContentType></ContentTypes>
     <Fields>
       
-    <Field ID="{2aa34eb1-f589-4006-89b2-9390f6b4a469}" Name="EmpresaId" DisplayName="Empresa Id" Type="Number" Required="TRUE" Group="Custom Site Columns"></Field><Field ID="{995e7220-e87d-45d2-89b2-9145ec38f416}" Name="AlumnoId" DisplayName="Alumno Id" Type="Number" Required="TRUE" Group="Custom Site Columns"></Field></Fields>
+    <Field ID="{4f2b74dc-6810-45dd-b588-378c83c479f5}" Name="DatosJson" DisplayName="DatosJson" Type="Note" Required="TRUE" Group="Custom Site Columns"></Field><Field ID="{dd6ab2f8-c150-4113-800a-be2f287f2f3d}" Name="Fecha" DisplayName="Fecha" Type="DateTime" Required="TRUE" Group="Custom Site Columns"></Field></Fields>
     <Views>
       
       
@@ -35,7 +35,7 @@
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
           
-        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="EmpresaId" /><FieldRef Name="AlumnoId" /></ViewFields>
+        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="DatosJson" /><FieldRef Name="Fecha" /></ViewFields>
         <Query>
           <OrderBy>
             

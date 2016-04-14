@@ -1,12 +1,17 @@
 ﻿import {Empresa}                                    from '../models/empresa'
 import {Alumno}                                     from '../models/alumno'
-import {LogService}                                 from '../services/log.service';
-import {Component, OnInit}                          from 'angular2/core'
+import {Historial}                                  from '../models/historial'
+import {DatosEvento}                                from '../models/datos-evento'
+import {AlumnoService}                              from '../services/alumno.service'
+import {LogService}                                 from '../services/log.service'
+import {Component, OnInit, EventEmitter}            from 'angular2/core'
 
 @Component({
     selector: 'resumen-proceso',
     templateUrl: BASE_URL + '/templates/resumen-proceso.template.html',
-    inputs: ['listaAlumnosRestantes', 'listaAlumnosFinal', 'listaEmpresas']
+    outputs: ['resumenProcesoEvt'],
+    inputs: ['listaAlumnosRestantes', 'listaAlumnosFinal', 'listaEmpresas'],
+    providers: [AlumnoService]
 })
 
 export class ResumenProcesoComponent {
@@ -14,8 +19,12 @@ export class ResumenProcesoComponent {
     public listaAlumnosRestantes: Alumno[];
     public listaAlumnosFinal: Alumno[];
     public listaEmpresas: Empresa[];
+    public resumenProcesoEvt: EventEmitter;
 
-    constructor() { }
+
+    constructor(private _alumnoService: AlumnoService) {
+        this.resumenProcesoEvt = new EventEmitter();
+    }
 
     public ngOnInit() {
 
@@ -29,8 +38,21 @@ export class ResumenProcesoComponent {
         var aCsv = document.getElementById("descargarCsv");
         aCsv.href = 'data:' + dataCsv;
         aCsv.download = 'AlumnosEmpresa.csv';
+
+
+        this.addHistorial();
     }
 
+    public addHistorial() {
+        let historial = new Historial(JSON.stringify(this.listaAlumnosFinal), new Date().toLocaleString());
+
+        this._alumnoService.addHistorial(historial).subscribe(
+            data => {
+                this.lanzarEvento("AGREGAR_HISTORIAL", Historial.fromJson(data.d));
+            },
+            err => { LogService.log("POST Historial Error: " + err._body); }
+        );
+    }
 
     private getCsv() {
         var array = this.listaAlumnosFinal;
@@ -44,6 +66,10 @@ export class ResumenProcesoComponent {
             str += line + '\r\n';
         }
         return str;
+    }
+
+    public lanzarEvento(orden: string, datos: any) {
+        this.resumenProcesoEvt.next(new DatosEvento(orden, datos));
     }
 
 }

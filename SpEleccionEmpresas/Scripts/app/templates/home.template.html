@@ -2,7 +2,7 @@
     <div style="text-align: center">
         <h1>SELEM - Selección de empresas para prácticas</h1>
     </div>
-    <div class="contenido" *ngIf="!seleccionIniciada">
+    <div class="contenido" *ngIf="!seleccionIniciada && !verHistorial">
 
         <div class="columnaAlumnos w-315">
             <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
@@ -11,6 +11,7 @@
 
         <div class="columnaCen" style="margin-top: 300px">
             <input type="button" value="INICIAR SELECCIÓN" (click)="seleccionIniciada = true" />
+            <input type="button" value="HISTORIAL" (click)="verHistorial = true" [disabled]="!listaHistorial || listaHistorial.length <= 0" />
         </div>
 
         <div class="columnaEmpresas w-315">
@@ -27,8 +28,20 @@
         </div>
 
     </div>
-    <div class="contenido" *ngIf="seleccionIniciada">
-        <proceso-seleccion [listaEmpresas]="listaEmpresas" [listaAlumnos]="listaAlumnos"></proceso-seleccion>
+    <div class="contenido" *ngIf="seleccionIniciada && !verHistorial">
+        <proceso-seleccion [listaEmpresas]="listaEmpresas" [listaAlumnos]="listaAlumnos" (procesoSeleccionEvt)="manejarEventos($event)"></proceso-seleccion>
+        <div>
+            <input id="volverAtras" type="button" (click)="seleccionIniciada = false" value="Volver al inicio" />
+        </div>
+    </div>
+
+    <div class="contenido" *ngIf="verHistorial">
+        <lista-historial [listaHistorial]="listaHistorial"></lista-historial>
+        <br /><br /><br />
+        <div>
+            <input type="button" value="Volver atrás" (click)="verHistorial = false" />
+
+        </div>
     </div>
 
 </div>
