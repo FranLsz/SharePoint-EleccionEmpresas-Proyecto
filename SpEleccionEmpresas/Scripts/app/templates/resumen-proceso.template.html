@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="#alumno of listaAlumnosFinal">
-            <td>{{alumno.nombre}} </td>
+            <td>{{alumno.nombre}} {{alumno.apellidos}} <i>({{alumno.puntuacion}})</i></td>
             <td>{{alumno.empresa.nombre}} </td>
         </tr>
     </tbody>

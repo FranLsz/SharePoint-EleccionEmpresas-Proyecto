@@ -1,6 +1,6 @@
 ﻿<fieldset style="padding: 20px;">
     <legend> Alumnos </legend>
-    Buscar: <input placeholder="Nombre, apellido..." [(ngModel)]="buscador" />
+    Buscar: <input placeholder="Nombre, apellido..." [(ngModel)]="buscador" type="text" />
     <ul>
         <li *ngFor="#alumno of listaAlumnos | orderBy : '-puntuacion'  : '+apellidos' | filtrar:buscador" (click)="onSelect(alumno)">
             <strong>{{alumno.apellidos}}, {{alumno.nombre}}</strong>
