@@ -45,16 +45,26 @@ export class DataInitService {
 
     // Alumnos
     private alumnosData: Alumno[] = [
-        new Alumno("Bob", "Fill Clark", this.getRandomPuntacion()),
-        new Alumno("Lucy", "Sum Hey", this.getRandomPuntacion())//,
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion()),
-        //new Alumno("Kouk", "Bale Nill", this.getRandomPuntacion())
+        new Alumno("Adrián", "Arranz Cuervo ", this.getRandomPuntacion()),
+        new Alumno("Daniel", "Corregidor Coronado", this.getRandomPuntacion()),
+        new Alumno("Félix", "Martínez Álvaro", this.getRandomPuntacion()),
+        new Alumno("Álvaro", "Ramiro Ledesma", this.getRandomPuntacion()),
+        new Alumno("José Antonio", "Pérez-Ruibal Del Águila", this.getRandomPuntacion()),
+        new Alumno("Petter Paul", "Lozano Cruzado", this.getRandomPuntacion()),
+        new Alumno("Eduardo", "Flores Miranda", this.getRandomPuntacion()),
+        new Alumno("Miguel Ángel", "Gómez Sánchez", this.getRandomPuntacion()),
+        new Alumno("Gabriel", "González-Santander Natera", this.getRandomPuntacion()),
+        new Alumno("Alejandro", "García Francos", this.getRandomPuntacion()),
+        new Alumno("David", "González Álvarez", this.getRandomPuntacion()),
+        new Alumno("David", "Lozano Rivada", this.getRandomPuntacion()),
+        new Alumno("Cristina", "Machuca Aparicio", this.getRandomPuntacion()),
+        new Alumno("Julio César", "Ruperti Ortiz", this.getRandomPuntacion()),
+        new Alumno("Julio César", "Rodríguez García José Ignacio", this.getRandomPuntacion()),
+        new Alumno("José Carlos", "Quiroga Garre", this.getRandomPuntacion()),
+        new Alumno("Gabriel", "Stanescu Mirel", this.getRandomPuntacion()),
+        new Alumno("Francisco", "López Sánchez", this.getRandomPuntacion()),
+        new Alumno("Álvaro", "Dama Jiménez", this.getRandomPuntacion()),
+        new Alumno("Juan José", "García Herrero", this.getRandomPuntacion()),
     ];
 
 }
