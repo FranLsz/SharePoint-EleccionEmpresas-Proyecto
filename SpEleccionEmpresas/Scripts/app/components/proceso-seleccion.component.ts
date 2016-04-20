@@ -43,20 +43,16 @@ export class ProcesoSeleccionComponent {
 
         document.getElementById("volverAtras").style.display = 'none';
 
-        for (var i = 0; i < this.listaAlumnos.length; i++) {
+        for (var i = 0; i < this.listaAlumnos.length; i++)
             this.listaAlumnosAux.push(this.listaAlumnos[i].detach())
-        }
 
-        for (var i = 0; i < this.listaEmpresas.length; i++) {
+        for (var i = 0; i < this.listaEmpresas.length; i++)
             this.listaEmpresasAux.push(this.listaEmpresas[i].detach())
-        }
 
         this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnosAux);
     }
 
     public seleccionarEmpresa() {
-        //TODO: Guardar el estado de la seleccion hasta que termine (usar lista EmpresaAlumno)
-
         var alumno = this.alumno;
         var vacantes = false;
         alumno.empresa = this.empresa;
@@ -95,6 +91,7 @@ export class ProcesoSeleccionComponent {
         } else {
             document.getElementById("volverAtras").style.display = 'block';
             this.finalizado = true;
+
         }
     }
 
