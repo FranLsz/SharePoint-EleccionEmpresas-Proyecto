@@ -17,9 +17,7 @@ export class ListaHistorialComponent {
     public historial: Historial;
     public listaAlumnos: Alumno[];
 
-    constructor() {
-
-    }
+    constructor() {}
 
     public ngOnInit() {
 
@@ -38,8 +36,6 @@ export class ListaHistorialComponent {
             }
 
         }
-
-        console.log(this.listaHistorial);
     }
 
 

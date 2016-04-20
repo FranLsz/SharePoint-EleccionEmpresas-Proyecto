@@ -6,7 +6,7 @@ import {AlumnoService}                              from '../services/alumno.ser
 import {ListaEmpresasComponent}                     from './lista-empresas.component'
 import {DetalleEmpresaComponent}                    from './detalle-empresa.component'
 import {ResumenProcesoComponent}                    from './resumen-proceso.component'
-import {LogService}                                 from '../services/log.service';
+import {LogService}                                 from '../services/log.service'
 import {Component, OnInit, EventEmitter}            from 'angular2/core'
 
 @Component({
@@ -14,8 +14,7 @@ import {Component, OnInit, EventEmitter}            from 'angular2/core'
     templateUrl: BASE_URL + '/templates/proceso-seleccion.template.html',
     inputs: ['listaEmpresas', 'listaAlumnos'],
     outputs: ['procesoSeleccionEvt'],
-    directives: [ListaEmpresasComponent, DetalleEmpresaComponent, ResumenProcesoComponent],
-    providers: [EmpresaService, AlumnoService]
+    directives: [ListaEmpresasComponent, DetalleEmpresaComponent, ResumenProcesoComponent]
 })
 
 
@@ -53,7 +52,6 @@ export class ProcesoSeleccionComponent {
         }
 
         this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnosAux);
-        console.log(this.empresa);
     }
 
     public seleccionarEmpresa() {

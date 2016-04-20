@@ -13,7 +13,7 @@ export class EmpresaService {
     }
 
     // SET HEADERS
-    setHeaders(verb?: string) {
+    private setHeaders(verb?: string) {
         var headers = new Headers();
 
         var digest = document.getElementById('__REQUESTDIGEST').value;
@@ -39,12 +39,12 @@ export class EmpresaService {
     }
 
     // GET
-    getEmpresas() {
+    public getEmpresa() {
         return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('Empresa')/items", { headers: this.setHeaders() }).map((res: Response) => res.json());
     }
 
     // POST
-    addEmpresa(empresa: Empresa) {
+    public addEmpresa(empresa: Empresa) {
 
         var obj = {
             '__metadata': { 'type': 'SP.Data.EmpresaListItem' },
@@ -58,7 +58,7 @@ export class EmpresaService {
     }
 
     // PUT
-    putEmpresa(empresa: Empresa) {
+    public putEmpresa(empresa: Empresa) {
 
         var obj = {
             '__metadata': { 'type': 'SP.Data.EmpresaListItem' },
@@ -72,7 +72,7 @@ export class EmpresaService {
     }
 
     // DELETE
-    deleteEmpresa(empresa: Empresa) {
+    public deleteEmpresa(empresa: Empresa) {
         return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('Empresa')/items(" + empresa.id + ")", null, { headers: this.setHeaders("DELETE") });
     }
 }

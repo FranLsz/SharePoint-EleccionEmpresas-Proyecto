@@ -1,7 +1,7 @@
 ﻿import {HomeComponent}                              from './home.component'
+import {LogService}                                 from '../services/log.service'
+import {DataInitService}                            from '../services/data-init.service'
 import {ROUTER_DIRECTIVES, RouteConfig, Router}     from 'angular2/router'
-import {LogService}                                 from '../services/log.service';
-import {DataInitService}                            from '../services/data-init.service';
 import {Component, OnInit}                          from 'angular2/core'
 
 @Component({

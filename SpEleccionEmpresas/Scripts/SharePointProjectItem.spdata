@@ -35,5 +35,6 @@
     <ProjectItemFile Source="app\models\historial.ts" Target="Scripts\app\models\" Type="ElementFile" />
     <ProjectItemFile Source="app\components\lista-historial.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
     <ProjectItemFile Source="app\templates\lista-historial.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="app\services\historial.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
   </Files>
 </ProjectItem>

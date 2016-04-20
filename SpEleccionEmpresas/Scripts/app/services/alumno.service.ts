@@ -14,7 +14,7 @@ export class AlumnoService {
     }
 
     // SET HEADERS
-    setHeaders(verb?: string) {
+    private setHeaders(verb?: string) {
         var headers = new Headers();
 
         var digest = document.getElementById('__REQUESTDIGEST').value;
@@ -40,12 +40,12 @@ export class AlumnoService {
     }
 
     // GET
-    getAlumnos() {
+    public getAlumno() {
         return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('Alumno')/items", { headers: this.setHeaders() }).map((res: Response) => res.json());
     }
 
     // POST
-    addAlumno(alumno: Alumno) {
+    public addAlumno(alumno: Alumno) {
 
         var obj = {
             '__metadata': { 'type': 'SP.Data.AlumnoListItem' },
@@ -59,7 +59,7 @@ export class AlumnoService {
     }
 
     // PUT
-    putAlumno(alumno: Alumno) {
+    public putAlumno(alumno: Alumno) {
 
         var obj = {
             '__metadata': { 'type': 'SP.Data.AlumnoListItem' },
@@ -73,26 +73,7 @@ export class AlumnoService {
     }
 
     // DELETE
-    deleteAlumno(alumno: Alumno) {
+    public deleteAlumno(alumno: Alumno) {
         return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('Alumno')/items(" + alumno.id + ")", null, { headers: this.setHeaders("DELETE") });
-    }
-
-    // GET HISTORICO
-    getHistorial() {
-        return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items", { headers: this.setHeaders() }).map((res: Response) => res.json());
-    }
-
-    // POST HISTORICO
-    addHistorial(historial: Historial) {
-        console.log(historial);
-        
-        var obj = {
-            '__metadata': { 'type': 'SP.Data.EmpresaAlumnoListItem' },
-            'DatosJson': historial.datosJson,
-            'Fecha': historial.fecha,
-        };
-
-        var data = JSON.stringify(obj);
-        return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items", data, { headers: this.setHeaders("POST") }).map((res: Response) => res.json());
     }
 }

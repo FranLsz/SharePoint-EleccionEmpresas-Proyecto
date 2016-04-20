@@ -3,6 +3,7 @@ import {Alumno}                                     from '../models/alumno'
 import {Historial}                                  from '../models/historial'
 import {DatosEvento}                                from '../models/datos-evento'
 import {AlumnoService}                              from '../services/alumno.service'
+import {HistorialService}                           from '../services/historial.service'
 import {LogService}                                 from '../services/log.service'
 import {Component, OnInit, EventEmitter}            from 'angular2/core'
 
@@ -10,8 +11,7 @@ import {Component, OnInit, EventEmitter}            from 'angular2/core'
     selector: 'resumen-proceso',
     templateUrl: BASE_URL + '/templates/resumen-proceso.template.html',
     outputs: ['resumenProcesoEvt'],
-    inputs: ['listaAlumnosRestantes', 'listaAlumnosFinal', 'listaEmpresas'],
-    providers: [AlumnoService]
+    inputs: ['listaAlumnosRestantes', 'listaAlumnosFinal', 'listaEmpresas']
 })
 
 export class ResumenProcesoComponent {
@@ -22,7 +22,7 @@ export class ResumenProcesoComponent {
     public resumenProcesoEvt: EventEmitter;
 
 
-    constructor(private _alumnoService: AlumnoService) {
+    constructor(private _historialService: HistorialService) {
         this.resumenProcesoEvt = new EventEmitter();
     }
 
@@ -44,9 +44,10 @@ export class ResumenProcesoComponent {
     }
 
     public addHistorial() {
-        let historial = new Historial(JSON.stringify(this.listaAlumnosFinal), new Date().toLocaleString());
+        // toLocaleString() no es compatible con todos los navegadores
+        var historial = new Historial(JSON.stringify(this.listaAlumnosFinal), new Date().toLocaleString("en-US"));
 
-        this._alumnoService.addHistorial(historial).subscribe(
+        this._historialService.addHistorial(historial).subscribe(
             data => {
                 this.lanzarEvento("AGREGAR_HISTORIAL", Historial.fromJson(data.d));
             },

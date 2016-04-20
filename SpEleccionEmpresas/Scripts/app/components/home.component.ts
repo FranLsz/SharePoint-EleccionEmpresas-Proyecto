@@ -4,20 +4,21 @@ import {Historial}                                  from '../models/historial'
 import {DatosEvento}                                from '../models/datos-evento'
 import {EmpresaService}                             from '../services/empresa.service'
 import {AlumnoService}                              from '../services/alumno.service'
+import {HistorialService}                           from '../services/historial.service'
 import {FormAlumnoComponent}                        from './form-alumno.component'
 import {FormEmpresaComponent}                       from './form-empresa.component'
 import {ListaAlumnosComponent}                      from './lista-alumnos.component'
 import {ListaEmpresasComponent}                     from './lista-empresas.component'
 import {ProcesoSeleccionComponent}                  from './proceso-seleccion.component'
 import {ListaHistorialComponent}                    from './lista-historial.component'
-import {LogService}                                 from '../services/log.service';
+import {LogService}                                 from '../services/log.service'
 import {ROUTER_DIRECTIVES, RouteConfig, Router}     from 'angular2/router'
 import {Component, OnInit}                          from 'angular2/core'
 
 @Component({
     selector: 'home',
     templateUrl: BASE_URL + '/templates/home.template.html',
-    providers: [EmpresaService, AlumnoService],
+    providers: [EmpresaService, AlumnoService, HistorialService],
     directives: [FormAlumnoComponent, FormEmpresaComponent, ListaAlumnosComponent, ListaEmpresasComponent, ProcesoSeleccionComponent, ListaHistorialComponent]
 })
 
@@ -34,7 +35,7 @@ export class HomeComponent {
     public verHistorial: boolean;
     public listaHistorial: Historial[];
 
-    constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService) {
+    constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService, private _historialService: HistorialService) {
         this.empresaForm = new Empresa();
         this.alumnoForm = new Alumno();
         this.listaEmpresas = [];
@@ -45,21 +46,17 @@ export class HomeComponent {
     public ngOnInit() {
         this.getEmpresas();
         this.getAlumnos();
-        this.getHistorial();
+        this.getHistoriales();
 
         this.accionEmpresaForm = "Nueva empresa";
         this.accionAlumnoForm = "Nuevo alumno";
 
         document.getElementById("cargando").style.display = 'none';
         document.getElementsByTagName("app-main")[0].style.display = 'block';
-
-
-        var data = this._alumnoService.getHistorial()
-        console.log();
     }
 
     public getEmpresas() {
-        this._empresaService.getEmpresas().subscribe(
+        this._empresaService.getEmpresa().subscribe(
             data => {
                 LogService.info("Lista de empresas cargada");
                 this.listaEmpresas = Empresa.fromJsonList(data.d.results);
@@ -70,7 +67,7 @@ export class HomeComponent {
     }
 
     public getAlumnos() {
-        this._alumnoService.getAlumnos().subscribe(
+        this._alumnoService.getAlumno().subscribe(
             data => {
                 LogService.info("Lista de alumnos cargada");
                 this.listaAlumnos = Alumno.fromJsonList(data.d.results);
@@ -80,8 +77,8 @@ export class HomeComponent {
         );
     }
 
-    public getHistorial() {
-        this._alumnoService.getHistorial().subscribe(
+    public getHistoriales() {
+        this._historialService.getHistorial().subscribe(
             data => {
                 LogService.info("Historial cargado");
                 this.listaHistorial = Historial.fromJsonList(data.d.results);
