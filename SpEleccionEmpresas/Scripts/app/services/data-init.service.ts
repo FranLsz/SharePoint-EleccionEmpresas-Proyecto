@@ -56,9 +56,7 @@ export class DataInitService {
     }
 
     private getRandomPuntacion() {
-        var max = 100;
-        var min = 0;
-        return Math.floor(Math.random() * (max - min + 1) + min);
+        return _.random(0, 100);
     }
 
     // Empresas

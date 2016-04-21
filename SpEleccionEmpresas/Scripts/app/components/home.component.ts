@@ -129,20 +129,29 @@ export class HomeComponent {
                 break;
 
             case "ACTUALIZAR_DE_LA_LISTA_ALUMNO":
+                //var index = _.find(this.listaAlumnos, { id: arg.datos.id });
+                // console.log("INDEX " + index);
+                // _.update(this.listaAlumnos, "[" + _.find(this.listaAlumnos, { id: arg.datos.id }) + "]", function (n) { return n * n; });
+
+                //_.update(this.listaAlumnos, { id: + arg.datos.id +  }, arg.datos);
                 for (var i = 0; i < this.listaAlumnos.length; i++) {
                     if (this.listaAlumnos[i].id == arg.datos.id)
                         this.listaAlumnos[i] = arg.datos;
                 }
+
+                //_(this.listaAlumnos).forEach(function (e) {
+                //    if (e.id == arg.datos.id)
+                //        e = arg.datos;
+                //});
+
                 this.accionAlumnoForm = "Nuevo alumno";
                 break;
             case "DELETE_ALUMNO":
-                var i = this.listaAlumnos.map(function (e) { return e.id; }).indexOf(arg.datos.id);
-                this.listaAlumnos.splice(i, 1);
+                _.remove(this.listaAlumnos, function (e) { return e.id == arg.datos.id; });
                 this.accionAlumnoForm = "Nuevo alumno";
                 break;
             case "DELETE_EMPRESA":
-                var i = this.listaEmpresas.map(function (e) { return e.id; }).indexOf(arg.datos.id);
-                this.listaEmpresas.splice(i, 1);
+                _.remove(this.listaEmpresas, function (e) { return e.id == arg.datos.id; });
                 this.accionEmpresaForm = "Nueva empresa";
                 break;
             case "EDITAR_DETALLE_EMPRESA":

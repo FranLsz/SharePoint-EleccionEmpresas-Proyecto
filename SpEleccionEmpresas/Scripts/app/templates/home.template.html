@@ -2,8 +2,9 @@
     <div style="text-align: center">
         <h1>SELEM - Selección de empresas para prácticas</h1>
     </div>
-    <div class="contenido" *ngIf="!seleccionIniciada && !verHistorial">
 
+    <!-- Pre proceso selección (admin-panel) -->
+    <div class="contenido" *ngIf="!seleccionIniciada && !verHistorial">
         <div class="columnaAlumnos w-315">
             <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
             <lista-alumnos [listaAlumnos]="listaAlumnos" (listaAlumnosEvt)="manejarEventos($event)"></lista-alumnos>
@@ -19,15 +20,21 @@
             <lista-empresas [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
 
             <div [ngSwitch]="estadoVacantes">
-                <p style="color: orange" *ngSwitchWhen="'Insuficientes'">*  Con la configuración actual,<br /> harán falta {{nivelVacantes}} vacantes <br /> para cubrir a todos los alumnos.</p>
-                <p style="color: green" *ngSwitchWhen="'Equilibrado'">* Con la configuración actual,<br /> hay el mismo número de alumnos<br /> que de vacantes.</p>
-                <p style="color: orange" *ngSwitchWhen="'Sobrantes'">*  Con la configuración actual,<br /> quedarán {{nivelVacantes}} vacantes sin rellenar al final<br /> de la selección de empresas.</p>
+                <p style="color: orange" *ngSwitchWhen="'Insuficientes'">
+                    * Con la configuración actual,<br /> harán falta {{nivelVacantes}} vacantes <br /> para cubrir a todos los alumnos.
+                </p>
+                <p style="color: green" *ngSwitchWhen="'Equilibrado'">
+                    * Con la configuración actual,<br /> hay el mismo número de alumnos<br /> que de vacantes.
+                </p>
+                <p style="color: orange" *ngSwitchWhen="'Sobrantes'">
+                    * Con la configuración actual,<br /> quedarán {{nivelVacantes}} vacantes sin rellenar al final<br /> de la selección de empresas.
+                </p>
             </div>
 
-
         </div>
-
     </div>
+
+    <!-- Proceso selección -->
     <div class="contenido" *ngIf="seleccionIniciada && !verHistorial">
         <proceso-seleccion [listaEmpresas]="listaEmpresas" [listaAlumnos]="listaAlumnos" (procesoSeleccionEvt)="manejarEventos($event)"></proceso-seleccion>
         <div>
@@ -35,13 +42,12 @@
         </div>
     </div>
 
+    <!-- Historial -->
     <div class="contenido" *ngIf="verHistorial">
         <lista-historial [listaHistorial]="listaHistorial"></lista-historial>
         <br /><br /><br />
         <div>
             <input type="button" value="Volver atrás" (click)="verHistorial = false" />
-
         </div>
     </div>
-
 </div>

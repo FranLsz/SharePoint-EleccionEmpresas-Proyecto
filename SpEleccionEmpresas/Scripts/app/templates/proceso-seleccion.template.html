@@ -8,10 +8,10 @@
         Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b>, con una puntuación de <i style="color: green">{{alumno.puntuacion}}</i>, seleccione una empresa para prácticas
     </h2>
     <br /><br />
-    <lista-empresas style="float: left" [listaEmpresas]="listaEmpresasAux" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+    <lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
     <detalle-empresa style="float: left" [empresa]="empresa" (detalleEmpresaEvt)="manejarEventos($event)"></detalle-empresa>
 </div>
 
 <div *ngIf="finalizado">
-    <resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnosAux" [listaEmpresas]="listaEmpresasAux" (resumenProcesoEvt)="manejarEventos($event)"></resumen-proceso>
+    <resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnosAux" [listaEmpresas]="listaEmpresas" (resumenProcesoEvt)="manejarEventos($event)"></resumen-proceso>
 </div>

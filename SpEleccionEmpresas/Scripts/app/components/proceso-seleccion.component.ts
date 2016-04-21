@@ -7,6 +7,7 @@ import {ListaEmpresasComponent}                     from './lista-empresas.compo
 import {DetalleEmpresaComponent}                    from './detalle-empresa.component'
 import {ResumenProcesoComponent}                    from './resumen-proceso.component'
 import {LogService}                                 from '../services/log.service'
+import {RestoreService}                             from '../services/restore.service'
 import {Component, OnInit, EventEmitter}            from 'angular2/core'
 
 @Component({
@@ -14,29 +15,34 @@ import {Component, OnInit, EventEmitter}            from 'angular2/core'
     templateUrl: BASE_URL + '/templates/proceso-seleccion.template.html',
     inputs: ['listaEmpresas', 'listaAlumnos'],
     outputs: ['procesoSeleccionEvt'],
+    providers: [RestoreService],
     directives: [ListaEmpresasComponent, DetalleEmpresaComponent, ResumenProcesoComponent]
 })
 
 
 export class ProcesoSeleccionComponent {
 
-    public listaEmpresas: Empresa[];
-    public listaEmpresasAux: Empresa[];
     public listaAlumnos: Alumno[];
     public listaAlumnosAux: Alumno[];
     public listaAlumnosFinal: Alumno[];
     public empresa: Empresa;
     public alumno: Alumno;
     public finalizado: boolean = false;
-
     public procesoSeleccionEvt: EventEmitter;
 
-    constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService) {
+    // queremos que la lista del proceso sea una copia para no modificar la del componente padre
+    set listaEmpresas(empresas: Empresa[]) {
+        this._restoreService.setItem(empresas);
+    }
+    get listaEmpresas() {
+        return this._restoreService.getItem();
+    }
+
+    constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService, private _restoreService: RestoreService<Empresa[]>) {
         this.alumno = new Alumno();
         this.listaAlumnosFinal = [];
         this.procesoSeleccionEvt = new EventEmitter();
         this.listaAlumnosAux = [];
-        this.listaEmpresasAux = [];
     }
 
     public ngOnInit() {
@@ -45,9 +51,6 @@ export class ProcesoSeleccionComponent {
 
         for (var i = 0; i < this.listaAlumnos.length; i++)
             this.listaAlumnosAux.push(this.listaAlumnos[i].detach())
-
-        for (var i = 0; i < this.listaEmpresas.length; i++)
-            this.listaEmpresasAux.push(this.listaEmpresas[i].detach())
 
         this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnosAux);
     }
@@ -65,13 +68,13 @@ export class ProcesoSeleccionComponent {
         this.empresa.vacantesLibres--;
 
         // Actualizamos las vacantes de la empresa y comprobamos si quedan vacantes libres en general
-        for (var i = 0; i < this.listaEmpresasAux.length; i++) {
+        for (var i = 0; i < this.listaEmpresas.length; i++) {
 
-            if (this.listaEmpresasAux[i].id == this.empresa.id)
-                this.listaEmpresasAux[i] = this.empresa;
+            if (this.listaEmpresas[i].id == this.empresa.id)
+                this.listaEmpresas[i] = this.empresa;
 
             //si quedan vacantes
-            if (this.listaEmpresasAux[i].vacantesLibres > 0)
+            if (this.listaEmpresas[i].vacantesLibres > 0)
                 vacantes = true;
         }
 

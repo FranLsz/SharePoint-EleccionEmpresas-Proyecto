@@ -17,6 +17,9 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 
+    <!-- Lodash -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js"></script>
+
     <!-- IE required polyfills -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.0/es6-shim.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
@@ -80,7 +83,7 @@
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
-    
+
     <div id="cargando">
         <h1>Cargando...</h1>
     </div>

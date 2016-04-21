@@ -225,7 +225,9 @@
     <TypeScriptCompile Include="Scripts\app\services\alumno.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\data-init.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\empresa.service.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\http.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\log.service.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\restore.service.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

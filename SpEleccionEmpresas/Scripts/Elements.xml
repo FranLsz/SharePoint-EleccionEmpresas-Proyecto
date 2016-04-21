@@ -35,5 +35,7 @@
     <File Path="Scripts\app\components\lista-historial.component.ts" Url="Scripts/app/components/lista-historial.component.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\templates\lista-historial.template.html" Url="Scripts/app/templates/lista-historial.template.html" ReplaceContent="TRUE" />
     <File Path="Scripts\app\services\historial.service.ts" Url="Scripts/app/services/historial.service.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\services\http.service.ts" Url="Scripts/app/services/http.service.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\services\restore.service.ts" Url="Scripts/app/services/restore.service.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

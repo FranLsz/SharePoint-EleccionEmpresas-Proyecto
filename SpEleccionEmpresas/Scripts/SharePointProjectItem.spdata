@@ -36,5 +36,7 @@
     <ProjectItemFile Source="app\components\lista-historial.component.ts" Target="Scripts\app\components\" Type="ElementFile" />
     <ProjectItemFile Source="app\templates\lista-historial.template.html" Target="Scripts\app\templates\" Type="ElementFile" />
     <ProjectItemFile Source="app\services\historial.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
+    <ProjectItemFile Source="app\services\http.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
+    <ProjectItemFile Source="app\services\restore.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
   </Files>
 </ProjectItem>
