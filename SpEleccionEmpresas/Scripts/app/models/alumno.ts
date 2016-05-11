@@ -6,15 +6,20 @@ export class Alumno {
     public nombre: string;
     public apellidos: string;
     public puntuacion: number;
+    public userGuid: string;
+    public accountName: string;
     public empresa: Empresa;
 
     constructor();
     constructor(nombre: string, apellidos: string, puntuacion: number);
-    constructor(nombre: string, apellidos: string, puntuacion: number, id: number) {
+    constructor(nombre: string, apellidos: string, puntuacion: number, id: number, userGuid: string, accountName: string) {
 
         if (nombre != undefined) {
-            if (id != undefined)
+            if (id != undefined) {
                 this.id = id;
+                this.userGuid = this.userGuid;
+                this.accountName = accountName;
+            }
 
             this.nombre = nombre;
             this.apellidos = apellidos;
@@ -23,7 +28,7 @@ export class Alumno {
     }
 
     public static fromJson(json: any) {
-        return new Alumno(json.Nombre, json.Apellidos, json.Puntuacion, json.ID);
+        return new Alumno(json.Nombre, json.Apellidos, json.Puntuacion, json.ID, json.Guid, json.AccountName);
     }
 
     public static fromJsonList(json: any) {
@@ -50,6 +55,6 @@ export class Alumno {
     }
 
     public detach() {
-        return new Alumno(this.nombre, this.apellidos, this.puntuacion, this.id);
+        return new Alumno(this.nombre, this.apellidos, this.puntuacion, this.id, this.userGuid, this.accountName);
     }
 }

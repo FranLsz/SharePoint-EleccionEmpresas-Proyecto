@@ -3,7 +3,10 @@
     Buscar: <input placeholder="Nombre, apellido..." [(ngModel)]="buscador" type="text" />
     <ul>
         <li *ngFor="#alumno of listaAlumnos | orderBy : '-puntuacion'  : '+apellidos' | filtrar:buscador" (click)="onSelect(alumno)">
-            <strong>{{alumno.apellidos}}, {{alumno.nombre}}</strong>
+
+            <strong *ngIf="alumno.apellidos != null">{{alumno.apellidos}}, {{alumno.nombre}}</strong>
+            <strong *ngIf="alumno.apellidos == null">{{alumno.nombre}}</strong>
+
             <br />
             <i>Puntuación: {{alumno.puntuacion}}</i>
             <br /><br />

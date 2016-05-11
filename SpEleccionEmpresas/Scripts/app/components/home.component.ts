@@ -129,26 +129,15 @@ export class HomeComponent {
                 break;
 
             case "ACTUALIZAR_DE_LA_LISTA_ALUMNO":
-                //var index = _.find(this.listaAlumnos, { id: arg.datos.id });
-                // console.log("INDEX " + index);
-                // _.update(this.listaAlumnos, "[" + _.find(this.listaAlumnos, { id: arg.datos.id }) + "]", function (n) { return n * n; });
-
-                //_.update(this.listaAlumnos, { id: + arg.datos.id +  }, arg.datos);
                 for (var i = 0; i < this.listaAlumnos.length; i++) {
                     if (this.listaAlumnos[i].id == arg.datos.id)
                         this.listaAlumnos[i] = arg.datos;
                 }
-
-                //_(this.listaAlumnos).forEach(function (e) {
-                //    if (e.id == arg.datos.id)
-                //        e = arg.datos;
-                //});
-
                 this.accionAlumnoForm = "Nuevo alumno";
                 break;
             case "DELETE_ALUMNO":
-                _.remove(this.listaAlumnos, function (e) { return e.id == arg.datos.id; });
-                this.accionAlumnoForm = "Nuevo alumno";
+                //_.remove(this.listaAlumnos, function (e) { return e.id == arg.datos.id; });
+                //this.accionAlumnoForm = "Nuevo alumno";
                 break;
             case "DELETE_EMPRESA":
                 _.remove(this.listaEmpresas, function (e) { return e.id == arg.datos.id; });
@@ -159,8 +148,19 @@ export class HomeComponent {
                 this.empresaForm = arg.datos.detach();
                 break;
             case "EDITAR_ALUMNO":
-                this.accionAlumnoForm = "Modificar alumno";
-                this.alumnoForm = arg.datos.detach();
+                // Borra el alumno de la app
+                var res = confirm("¿Desea borrar el alumno?");
+                if (res) {
+                    _.remove(this.listaAlumnos, function (e) { return e.id == arg.datos.id; });
+                    this._alumnoService.deleteAlumno(arg.datos).subscribe(
+                        data => {
+                            _.remove(this.listaAlumnos, function (e) { return e.id == arg.datos.id; });
+                        },
+                        err => { LogService.error("Delete Alumno: " + err._body); }
+                    );
+                }
+                //this.accionAlumnoForm = "Detalle alumno";
+                //this.alumnoForm = arg.datos.detach();
                 break;
             case "AGREGAR_HISTORIAL":
                 this.listaHistorial.push(arg.datos)

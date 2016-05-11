@@ -37,5 +37,6 @@
     <File Path="Scripts\app\services\historial.service.ts" Url="Scripts/app/services/historial.service.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\services\http.service.ts" Url="Scripts/app/services/http.service.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\app\services\restore.service.ts" Url="Scripts/app/services/restore.service.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\app\services\alumno365.service.ts" Url="Scripts/app/services/alumno365.service.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

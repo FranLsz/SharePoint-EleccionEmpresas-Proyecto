@@ -1,6 +1,7 @@
 ﻿import {Alumno}                                                    from '../models/alumno'
 import {DatosEvento}                                               from '../models/datos-evento'
 import {AlumnoService}                                             from '../services/alumno.service'
+import {Alumno365Service}                                          from '../services/alumno365.service'
 import {LogService}                                                from '../services/log.service';
 import {NgForm, Control, Validators, FormBuilder, ControlGroup}    from 'angular2/common'
 import {Component, OnInit, OnChanges, EventEmitter}                from 'angular2/core'
@@ -17,25 +18,28 @@ export class FormAlumnoComponent {
     public accion: string;
     public btnAccion: string;
     public alumno: Alumno;
+    public o365UserName: string;
     public formAlumnoEvt: EventEmitter;
     public activo: boolean = true;
+    public userNameValido: number;
+    public user365: any;
 
     // Form
     public form: ControlGroup;
-    public nombre: Control;
-    public apellidos: Control;
+    //public nombre: Control;
+    //public apellidos: Control;
     public puntuacion: Control;
 
-    constructor(private _alumnoService: AlumnoService, private builder: FormBuilder) {
+    constructor(private _alumnoService: AlumnoService, private _alumno365Service: Alumno365Service, private builder: FormBuilder) {
         this.formAlumnoEvt = new EventEmitter();
 
-        this.nombre = new Control('', Validators.required);
-        this.apellidos = new Control('', Validators.required);
+        //this.nombre = new Control('', Validators.required);
+        //this.apellidos = new Control('', Validators.required);
         this.puntuacion = new Control('', Validators.compose([Validators.required, this.comprobarSiEsNumero]));
 
         this.form = builder.group({
-            "nombre": this.nombre,
-            "apellidos": this.apellidos,
+            //"nombre": this.nombre,
+            //"apellidos": this.apellidos,
             "puntuacion": this.puntuacion
         });
 
@@ -66,12 +70,53 @@ export class FormAlumnoComponent {
         }
     }
 
+    public buscarUsuario(userName) {
+        userName = userName.toLowerCase();
+
+        // 0 -> no valido
+        // 1 -> valido
+        // 2 -> limpio
+
+        if (userName.length == 0) {
+            this.userNameValido = 2;
+            return;
+        }
+
+        // pendiente
+        if (!userName.match(/[a-z0-9]/)) {
+            this.userNameValido = 0;
+            return;
+        }
+
+        this._alumno365Service.getAlumnoByUserName(userName).subscribe(
+            data => {
+                if (typeof (data.d.AccountName) != 'undefined') {
+                    this.userNameValido = 1;
+                    this.user365 = data.d;
+                }
+                else {
+                    this.userNameValido = 0;
+                }
+            },
+            err => {
+                LogService.log("Alumno 365: " + err._body);
+            }
+        );
+
+    }
+
     public onSubmit() {
         if (this.accion == "Nuevo alumno") {
+
+            this.alumno.accountName = this.user365.AccountName;
+            this.alumno.userGuid = this.user365.UserProfileProperties.results[0].Value;
+            this.alumno.nombre = this.user365.UserProfileProperties.results[4].Value;
+            this.alumno.apellidos = this.user365.UserProfileProperties.results[6].Value;
+
             this._alumnoService.addAlumno(this.alumno).subscribe(
                 data => {
+                    console.log(data.d);
                     this.lanzarEvento("AGREGAR_A_LISTA_ALUMNO", Alumno.fromJson(data.d));
-
                     this.reiniciarCampos();
                 },
                 err => { LogService.log("POST Alumnos Error: " + err._body); }
@@ -104,19 +149,23 @@ export class FormAlumnoComponent {
     }
 
     private reiniciarCampos() {
+
         // Reset de los campos
         this.alumno = new Alumno();
+
+        this.o365UserName = "";
+        this.userNameValido = 2;
 
         this.form['_touched'] = false;
         this.form['_pristine'] = true;
 
-        this.nombre['_touched'] = false;
-        this.nombre['_pristine'] = true;
-        this.nombre['_valid'] = true;
+        //this.nombre['_touched'] = false;
+        //this.nombre['_pristine'] = true;
+        //this.nombre['_valid'] = true;
 
-        this.apellidos['_touched'] = false;
-        this.apellidos['_pristine'] = true;
-        this.apellidos['_valid'] = true;
+        //this.apellidos['_touched'] = false;
+        //this.apellidos['_pristine'] = true;
+        //this.apellidos['_valid'] = true;
 
         this.puntuacion['_touched'] = false;
         this.puntuacion['_pristine'] = true;

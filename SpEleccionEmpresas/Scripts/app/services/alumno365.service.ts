@@ -5,12 +5,18 @@ import {Http, Response, Headers}    from 'angular2/http';
 import {Injectable}                 from 'angular2/core';
 
 @Injectable()
-export class AlumnoService {
+export class Alumno365Service {
 
     private spApiUrl: string;
+    private spCompanyName: string;
 
     constructor(private http: Http) {
         this.spApiUrl = _spPageContextInfo.webServerRelativeUrl;
+
+        //temporal
+        this.spCompanyName = "franapp";
+
+
     }
 
     // SET HEADERS
@@ -41,7 +47,13 @@ export class AlumnoService {
 
     // GET
     public getAlumno() {
-        return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('Alumno')/items", { headers: this.setHeaders() }).map((res: Response) => res.json());
+        //return this.http.get(this.spApiUrl + "/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='i:0%23.f|membership|fran@franapp.onmicrosoft.com'", { headers: this.setHeaders() }).map((res: Response) => res.json());
+    }
+
+    public getAlumnoByUserName(name: string) {
+        return this.http.get(
+            this.spApiUrl + "/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='i:0%23.f|membership|" + name + "@" + this.spCompanyName + ".onmicrosoft.com'",
+            { headers: this.setHeaders() }).map((res: Response) => res.json());
     }
 
     // POST
@@ -51,9 +63,7 @@ export class AlumnoService {
             '__metadata': { 'type': 'SP.Data.AlumnoListItem' },
             'Nombre': alumno.nombre,
             'Apellidos': alumno.apellidos,
-            'Puntuacion': alumno.puntuacion,
-            'Guid': alumno.userGuid,
-            'AccountName': alumno.accountName
+            'Puntuacion': alumno.puntuacion
         };
 
         var data = JSON.stringify(obj);
@@ -67,9 +77,7 @@ export class AlumnoService {
             '__metadata': { 'type': 'SP.Data.AlumnoListItem' },
             'Nombre': alumno.nombre,
             'Apellidos': alumno.apellidos,
-            'Puntuacion': alumno.puntuacion,
-            'Guid': alumno.userGuid,
-            'AccountName': alumno.accountName
+            'Puntuacion': alumno.puntuacion
         };
 
         var data = JSON.stringify(obj);

@@ -38,5 +38,6 @@
     <ProjectItemFile Source="app\services\historial.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
     <ProjectItemFile Source="app\services\http.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
     <ProjectItemFile Source="app\services\restore.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
+    <ProjectItemFile Source="app\services\alumno365.service.ts" Target="Scripts\app\services\" Type="ElementFile" />
   </Files>
 </ProjectItem>
