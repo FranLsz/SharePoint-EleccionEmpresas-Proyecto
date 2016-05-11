@@ -11,7 +11,7 @@
         </div>
 
         <div class="columnaCen" style="margin-top: 300px">
-            <input type="button" value="INICIAR SELECCIÓN" (click)="seleccionIniciada = true" />
+            <input type="button" value="INICIAR SELECCIÓN" (click)="iniciarSeleccion()" />
             <input type="button" value="HISTORIAL" (click)="verHistorial = true" [disabled]="!listaHistorial || listaHistorial.length <= 0" />
         </div>
 
@@ -36,7 +36,8 @@
 
     <!-- Proceso selección -->
     <div class="contenido" *ngIf="seleccionIniciada && !verHistorial">
-        <proceso-seleccion [listaEmpresas]="listaEmpresas" [listaAlumnos]="listaAlumnos" (procesoSeleccionEvt)="manejarEventos($event)"></proceso-seleccion>
+        <proceso-seleccion [alumnoLogeado]="alumnoLogeado" (procesoSeleccionEvt)="manejarEventos($event)"></proceso-seleccion>
+        <!--<proceso-seleccion [listaEmpresas]="listaEmpresas" [listaAlumnos]="listaAlumnos" [alumnoLogeado]="alumnoLogeado" (procesoSeleccionEvt)="manejarEventos($event)"></proceso-seleccion>-->
         <div>
             <input id="volverAtras" type="button" (click)="seleccionIniciada = false" value="Volver al inicio" />
         </div>

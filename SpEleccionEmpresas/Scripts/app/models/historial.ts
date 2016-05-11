@@ -6,13 +6,16 @@ export class Historial {
     public id: number;
     public datosJson: string;
     public fecha: any;
+    public terminado: boolean;
+    public empresasJson: string;
+    public alumnosJson: string;
 
     public empresas: Empresa[];
     public alumnos: Alumno[];
 
     constructor();
-    constructor(datosJson: string, fecha: any);
-    constructor(datosJson: string, fecha: any, id: number) {
+    constructor(datosJson: string, fecha: any, terminado: boolean, empresasJson: string, alumnosJson: string);
+    constructor(datosJson: string, fecha: any, terminado: boolean, empresasJson: string, alumnosJson: string, id: number) {
 
         if (datosJson != undefined) {
             if (id != undefined)
@@ -20,11 +23,14 @@ export class Historial {
 
             this.datosJson = datosJson;
             this.fecha = fecha;
+            this.terminado = terminado;
+            this.empresasJson = empresasJson;
+            this.alumnosJson = alumnosJson;
         }
     }
 
     public static fromJson(json: any) {
-        return new Historial(json.DatosJson, json.Fecha, json.ID);
+        return new Historial(json.DatosJson, json.Fecha, json.Terminado, json.EmpresasJson, json.AlumnosJson, json.ID);
     }
 
     public static fromJsonList(json: any) {

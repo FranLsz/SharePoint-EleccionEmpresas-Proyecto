@@ -3,13 +3,12 @@ import {LogService}                                 from '../services/log.servic
 import {DataInitService}                            from '../services/data-init.service'
 import {ROUTER_DIRECTIVES, RouteConfig, Router}     from 'angular2/router'
 import {Component, OnInit}                          from 'angular2/core'
-import {Alumno365Service}                           from '../services/alumno365.service';
 
 @Component({
     selector: 'app-main',
     templateUrl: BASE_URL + '/templates/app.template.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [DataInitService, Alumno365Service]
+    providers: [DataInitService]
 })
 
 @RouteConfig([
@@ -22,7 +21,7 @@ import {Alumno365Service}                           from '../services/alumno365.
 
 export class AppComponent {
 
-    constructor(private router: Router, private _dataInitService: DataInitService, private _svc365: Alumno365Service) { }
+    constructor(private router: Router, private _dataInitService: DataInitService) { }
 
     public ngOnInit() {
 

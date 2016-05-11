@@ -221,7 +221,6 @@
     <TypeScriptCompile Include="Scripts\app\pipes\acortar-texto.pipe.ts" />
     <TypeScriptCompile Include="Scripts\app\pipes\filtrar.pipe.ts" />
     <TypeScriptCompile Include="Scripts\app\pipes\order-by.pipe.ts" />
-    <TypeScriptCompile Include="Scripts\app\services\alumno365.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\historial.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\alumno.service.ts" />
     <TypeScriptCompile Include="Scripts\app\services\data-init.service.ts" />

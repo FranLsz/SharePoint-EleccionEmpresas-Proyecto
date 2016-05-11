@@ -17,7 +17,7 @@ export class Alumno {
         if (nombre != undefined) {
             if (id != undefined) {
                 this.id = id;
-                this.userGuid = this.userGuid;
+                this.userGuid = userGuid;
                 this.accountName = accountName;
             }
 
@@ -27,14 +27,17 @@ export class Alumno {
         }
     }
 
-    public static fromJson(json: any) {
+    public static fromJson(json: any, lowerProp: boolean) {
+        if (lowerProp)
+            return new Alumno(json.nombre, json.apellidos, json.puntuacion, json.id, json.userGuid, json.accountName);
+
         return new Alumno(json.Nombre, json.Apellidos, json.Puntuacion, json.ID, json.Guid, json.AccountName);
     }
 
-    public static fromJsonList(json: any) {
+    public static fromJsonList(json: any, lowerProp: boolean) {
         var list = [];
         for (var i = 0; i < json.length; i++) {
-            list.push(Alumno.fromJson(json[i]));
+            list.push(Alumno.fromJson(json[i], lowerProp));
         }
         return list;
     }

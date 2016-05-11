@@ -1,7 +1,6 @@
 ﻿import {Alumno}                                                    from '../models/alumno'
 import {DatosEvento}                                               from '../models/datos-evento'
 import {AlumnoService}                                             from '../services/alumno.service'
-import {Alumno365Service}                                          from '../services/alumno365.service'
 import {LogService}                                                from '../services/log.service';
 import {NgForm, Control, Validators, FormBuilder, ControlGroup}    from 'angular2/common'
 import {Component, OnInit, OnChanges, EventEmitter}                from 'angular2/core'
@@ -30,7 +29,7 @@ export class FormAlumnoComponent {
     //public apellidos: Control;
     public puntuacion: Control;
 
-    constructor(private _alumnoService: AlumnoService, private _alumno365Service: Alumno365Service, private builder: FormBuilder) {
+    constructor(private _alumnoService: AlumnoService, private builder: FormBuilder) {
         this.formAlumnoEvt = new EventEmitter();
 
         //this.nombre = new Control('', Validators.required);
@@ -53,6 +52,8 @@ export class FormAlumnoComponent {
 
     public ngOnInit() {
         this.btnAccion = "Agregar";
+
+
     }
 
     public ngOnChanges(cambios) {
@@ -88,7 +89,7 @@ export class FormAlumnoComponent {
             return;
         }
 
-        this._alumno365Service.getAlumnoByUserName(userName).subscribe(
+        this._alumnoService.get365UserByName(userName).subscribe(
             data => {
                 if (typeof (data.d.AccountName) != 'undefined') {
                     this.userNameValido = 1;
@@ -116,7 +117,7 @@ export class FormAlumnoComponent {
             this._alumnoService.addAlumno(this.alumno).subscribe(
                 data => {
                     console.log(data.d);
-                    this.lanzarEvento("AGREGAR_A_LISTA_ALUMNO", Alumno.fromJson(data.d));
+                    this.lanzarEvento("AGREGAR_A_LISTA_ALUMNO", Alumno.fromJson(data.d, false));
                     this.reiniciarCampos();
                 },
                 err => { LogService.log("POST Alumnos Error: " + err._body); }

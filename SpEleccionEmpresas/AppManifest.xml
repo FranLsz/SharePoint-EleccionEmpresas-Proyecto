@@ -15,6 +15,6 @@
     <Internal />
   </AppPrincipal>
   <AppPermissionRequests>
-    <AppPermissionRequest Scope="http://sharepoint/social/tenant" Right="Read" />
+    <AppPermissionRequest Scope="http://sharepoint/social/tenant" Right="Manage" />
   </AppPermissionRequests>
 </App>

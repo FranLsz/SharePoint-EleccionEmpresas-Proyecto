@@ -39,8 +39,12 @@ export class HistorialService {
     }
 
     // GET
-    public getHistorial() {
-        return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items", { headers: this.setHeaders() }).map((res: Response) => res.json());
+    public getHistorial(sinTerminar: boolean) {
+        var filtro = "";
+        if (sinTerminar)
+            filtro = "?$filter=Terminado eq false";
+
+        return this.http.get(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items" + filtro, { headers: this.setHeaders() }).map((res: Response) => res.json());
     }
 
     // POST
@@ -50,9 +54,32 @@ export class HistorialService {
             '__metadata': { 'type': 'SP.Data.EmpresaAlumnoListItem' },
             'DatosJson': historial.datosJson,
             'Fecha': historial.fecha,
+            'Terminado': historial.terminado,
+            'EmpresasJson': historial.empresasJson,
+            'AlumnosJson': historial.alumnosJson
         };
+
+        console.log(obj);
 
         var data = JSON.stringify(obj);
         return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items", data, { headers: this.setHeaders("POST") }).map((res: Response) => res.json());
+    }
+
+    // PUT
+    public putHistorial(historial: Historial) {
+
+        var obj = {
+            '__metadata': { 'type': 'SP.Data.EmpresaAlumnoListItem' },
+            'DatosJson': historial.datosJson,
+            'Fecha': historial.fecha,
+            'Terminado': historial.terminado,
+            'EmpresasJson': historial.empresasJson,
+            'AlumnosJson': historial.alumnosJson
+        };
+
+
+
+        var data = JSON.stringify(obj);
+        return this.http.post(this.spApiUrl + "/_api/web/lists/getByTitle('EmpresaAlumno')/items(" + historial.id + ")", data, { headers: this.setHeaders("PUT") });
     }
 }

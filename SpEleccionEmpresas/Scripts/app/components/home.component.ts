@@ -24,12 +24,14 @@ import {Component, OnInit}                          from 'angular2/core'
 
 export class HomeComponent {
 
+    public alumnoLogeado: Alumno;
     public empresaForm: Empresa;
     public alumnoForm: Alumno;
     public accionEmpresaForm: string;
     public accionAlumnoForm: string;
     public listaEmpresas: Empresa[];
     public listaAlumnos: Alumno[];
+    public seleccionIniciada: boolean;
     public estadoVacantes: string;
     public nivelVacantes: number;
     public verHistorial: boolean;
@@ -41,25 +43,84 @@ export class HomeComponent {
         this.listaEmpresas = [];
         this.listaAlumnos = [];
         this.listaHistorial = [];
+        this.accionEmpresaForm = "Nueva empresa";
+        this.accionAlumnoForm = "Nuevo alumno";
     };
 
     public ngOnInit() {
-        this.getEmpresas();
-        this.getAlumnos();
-        this.getHistoriales();
 
-        this.accionEmpresaForm = "Nueva empresa";
-        this.accionAlumnoForm = "Nuevo alumno";
+        this.cargarDatos();
 
-        document.getElementById("cargando").style.display = 'none';
-        document.getElementsByTagName("app-main")[0].style.display = 'block';
+    }
+
+    public cargarDatos() {
+        // CARGAR ALUMNOS
+        this._alumnoService.getAlumno().subscribe(
+            data => {
+                LogService.info("Lista de alumnos cargada");
+                this.listaAlumnos = Alumno.fromJsonList(data.d.results, false);
+                this.calcularVacantes();
+
+                // CARGAR EMPRESAS
+                this._empresaService.getEmpresa().subscribe(
+                    data => {
+                        LogService.info("Lista de empresas cargada");
+                        this.listaEmpresas = Empresa.fromJsonList(data.d.results, false);
+                        this.calcularVacantes();
+
+                        // CARGAR HISTORIALES
+                        this._historialService.getHistorial(false).subscribe(
+                            data => {
+                                LogService.info("Historial cargado");
+                                this.listaHistorial = Historial.fromJsonList(data.d.results);
+
+                                // una vez cargado todo, comprueba si el usuario logeado es un alumno
+                                this.comprobarUsuario();
+                            },
+                            err => { LogService.log("GET Historial Error: " + err._body); }
+                        );
+                    },
+                    err => { LogService.error("GET Empresas: " + err._body); }
+                );
+            },
+            err => { LogService.error("GET Alumnos: " + err._body); }
+        );
+    }
+
+    public comprobarUsuario() {
+        this._alumnoService.getUsuarioActual().subscribe(
+            data => {
+                for (var i = 0; i < this.listaAlumnos.length; i++) {
+                    if (this.listaAlumnos[i].accountName == data.d.AccountName) {
+                        console.log("ALUMNO DETECTADO");
+                        this.alumnoLogeado = this.listaAlumnos[i].detach();
+                        this.seleccionIniciada = true;
+                    }
+                }
+            },
+            error => { console.log(error); },
+            def => {
+                document.getElementById("cargando").style.display = 'none';
+                document.getElementsByTagName("app-main")[0].style.display = 'block';
+            });
+    }
+
+    public iniciarSeleccion() {
+        var historial = new Historial("vacio", new Date().toLocaleString("en-US"), false, JSON.stringify(this.listaEmpresas), JSON.stringify(this.listaAlumnos));
+
+        this._historialService.addHistorial(historial).subscribe(
+            data => {
+                alert("--PROCESO INICIADO--");
+            },
+            err => { LogService.log("POST Historial Error: " + err._body); }
+        );
     }
 
     public getEmpresas() {
         this._empresaService.getEmpresa().subscribe(
             data => {
                 LogService.info("Lista de empresas cargada");
-                this.listaEmpresas = Empresa.fromJsonList(data.d.results);
+                this.listaEmpresas = Empresa.fromJsonList(data.d.results, false);
                 this.calcularVacantes();
             },
             err => { LogService.error("GET Empresas: " + err._body); }
@@ -78,7 +139,7 @@ export class HomeComponent {
     }
 
     public getHistoriales() {
-        this._historialService.getHistorial().subscribe(
+        this._historialService.getHistorial(false).subscribe(
             data => {
                 LogService.info("Historial cargado");
                 this.listaHistorial = Historial.fromJsonList(data.d.results);

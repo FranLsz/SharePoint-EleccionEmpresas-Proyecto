@@ -45,7 +45,7 @@ export class ResumenProcesoComponent {
 
     public addHistorial() {
         // toLocaleString() no es compatible con todos los navegadores
-        var historial = new Historial(JSON.stringify(this.listaAlumnosFinal), new Date().toLocaleString("en-US"));
+        var historial = new Historial(JSON.stringify(this.listaAlumnosFinal), new Date().toLocaleString("en-US"), true, JSON.stringify(this.listaEmpresas), JSON.stringify(this.listaAlumnosRestantes));
 
         this._historialService.addHistorial(historial).subscribe(
             data => {

@@ -8,9 +8,13 @@ import {Injectable}                 from 'angular2/core';
 export class AlumnoService {
 
     private spApiUrl: string;
+    private spCompanyName: string;
 
     constructor(private http: Http) {
         this.spApiUrl = _spPageContextInfo.webServerRelativeUrl;
+
+        // temporal
+        this.spCompanyName = "franapp";
     }
 
     // SET HEADERS
@@ -37,6 +41,18 @@ export class AlumnoService {
         }
 
         return headers;
+    }
+
+    public get365UserByName(name: string) {
+        return this.http.get(
+            this.spApiUrl + "/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='i:0%23.f|membership|" + name + "@" + this.spCompanyName + ".onmicrosoft.com'",
+            { headers: this.setHeaders() }).map((res: Response) => res.json());
+    }
+
+    public getUsuarioActual() {
+        return this.http.get(
+            this.spApiUrl + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties",
+            { headers: this.setHeaders() }).map((res: Response) => res.json());
     }
 
     // GET

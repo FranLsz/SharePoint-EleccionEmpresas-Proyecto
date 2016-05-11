@@ -1,17 +1,22 @@
 ﻿
 
-<div *ngIf="!finalizado">
-    <br /><br />
-    <h1>PROCESO DE SELECCIÓN</h1>
-    <br /><br />
-    <h2>
-        Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b>, con una puntuación de <i style="color: green">{{alumno.puntuacion}}</i>, seleccione una empresa para prácticas
-    </h2>
-    <br /><br />
-    <lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
-    <detalle-empresa style="float: left" [empresa]="empresa" (detalleEmpresaEvt)="manejarEventos($event)"></detalle-empresa>
-</div>
+<div *ngIf="!sinProcesos">
+    <div *ngIf="!finalizado">
+        <br /><br />
+        <h1>PROCESO DE SELECCIÓN</h1>
+        <br /><br />
+        <h2>
+            Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b>, con una puntuación de <i style="color: green">{{alumno.puntuacion}}</i>, seleccione una empresa para prácticas
+        </h2>
+        <br /><br />
+        <!--<lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+        <detalle-empresa style="float: left" [empresa]="empresa" (detalleEmpresaEvt)="manejarEventos($event)"></detalle-empresa>-->
+    </div>
 
-<div *ngIf="finalizado">
-    <resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnosAux" [listaEmpresas]="listaEmpresas" (resumenProcesoEvt)="manejarEventos($event)"></resumen-proceso>
+    <div *ngIf="finalizado">
+        <!--<resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnosAux" [listaEmpresas]="listaEmpresas" (resumenProcesoEvt)="manejarEventos($event)"></resumen-proceso>-->
+    </div>
+</div>
+<div *ngIf="sinProcesos">
+    <h1>Lo sentimos, actualmente no hay ningún proceso de selección iniciado</h1>
 </div>
