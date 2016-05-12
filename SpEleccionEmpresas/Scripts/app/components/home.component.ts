@@ -36,6 +36,7 @@ export class HomeComponent {
     public nivelVacantes: number;
     public verHistorial: boolean;
     public listaHistorial: Historial[];
+    public procesoYaIniciado: boolean = false;
 
     constructor(private _empresaService: EmpresaService, private _alumnoService: AlumnoService, private _historialService: HistorialService) {
         this.empresaForm = new Empresa();
@@ -65,7 +66,9 @@ export class HomeComponent {
                 this._empresaService.getEmpresa().subscribe(
                     data => {
                         LogService.info("Lista de empresas cargada");
+
                         this.listaEmpresas = Empresa.fromJsonList(data.d.results, false);
+                        console.log("EMPRESAS EN BRUTO", this.listaEmpresas);
                         this.calcularVacantes();
 
                         // CARGAR HISTORIALES
@@ -90,12 +93,27 @@ export class HomeComponent {
     public comprobarUsuario() {
         this._alumnoService.getUsuarioActual().subscribe(
             data => {
+                var esAlumno = false;
                 for (var i = 0; i < this.listaAlumnos.length; i++) {
                     if (this.listaAlumnos[i].accountName == data.d.AccountName) {
                         console.log("ALUMNO DETECTADO");
                         this.alumnoLogeado = this.listaAlumnos[i].detach();
                         this.seleccionIniciada = true;
+                        esAlumno = true;
                     }
+                }
+
+                // si no es alumno, se comprueba si hay alguna seleccion activa
+                // en ese caso, se bloquea la app hasta que termine dicha seleccion
+                if (!esAlumno) {
+                    this._historialService.getHistorial(true).subscribe(
+                        data => {
+                            if (data.d.results.length > 0)
+                                this.procesoYaIniciado = true;
+
+                        },
+                        err => { LogService.log("GET Historial Error: " + err._body); }
+                    );
                 }
             },
             error => { console.log(error); },
@@ -110,7 +128,8 @@ export class HomeComponent {
 
         this._historialService.addHistorial(historial).subscribe(
             data => {
-                alert("--PROCESO INICIADO--");
+                this.procesoYaIniciado = true;
+                console.log("AFTER INICIAR SELECCION", data.d);
             },
             err => { LogService.log("POST Historial Error: " + err._body); }
         );
@@ -131,7 +150,7 @@ export class HomeComponent {
         this._alumnoService.getAlumno().subscribe(
             data => {
                 LogService.info("Lista de alumnos cargada");
-                this.listaAlumnos = Alumno.fromJsonList(data.d.results);
+                this.listaAlumnos = Alumno.fromJsonList(data.d.results, false);
                 this.calcularVacantes();
             },
             err => { LogService.error("GET Alumnos: " + err._body); }

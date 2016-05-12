@@ -4,7 +4,7 @@
     </div>
 
     <!-- Pre proceso selección (admin-panel) -->
-    <div class="contenido" *ngIf="!seleccionIniciada && !verHistorial">
+    <div class="contenido" *ngIf="!seleccionIniciada && !verHistorial && !procesoYaIniciado">
         <div class="columnaAlumnos w-315">
             <form-alumno [alumno]="alumnoForm" [accion]="accionAlumnoForm" (formAlumnoEvt)="manejarEventos($event)"></form-alumno>
             <lista-alumnos [listaAlumnos]="listaAlumnos" (listaAlumnosEvt)="manejarEventos($event)"></lista-alumnos>
@@ -32,6 +32,10 @@
             </div>
 
         </div>
+    </div>
+
+    <div *ngIf="procesoYaIniciado">
+        <h1>El proceso de selección ha iniciado, deberá esperar a que los alumnos seleccionen empresa para volver a editar sus parámetros</h1>
     </div>
 
     <!-- Proceso selección -->

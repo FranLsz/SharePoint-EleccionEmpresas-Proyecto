@@ -1,7 +1,7 @@
 ﻿
 
 <div *ngIf="!sinProcesos">
-    <div *ngIf="!finalizado">
+    <div *ngIf="!finalizado && noTuTurno=='siEs'">
         <br /><br />
         <h1>PROCESO DE SELECCIÓN</h1>
         <br /><br />
@@ -9,10 +9,18 @@
             Alumno <b>{{alumno.nombre}} {{alumno.apellidos}}</b>, con una puntuación de <i style="color: green">{{alumno.puntuacion}}</i>, seleccione una empresa para prácticas
         </h2>
         <br /><br />
-        <!--<lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
-        <detalle-empresa style="float: left" [empresa]="empresa" (detalleEmpresaEvt)="manejarEventos($event)"></detalle-empresa>-->
+        <lista-empresas style="float: left" [listaEmpresas]="listaEmpresas" (listaEmpresasEvt)="manejarEventos($event)"></lista-empresas>
+        <detalle-empresa style="float: left" [empresa]="empresa" (detalleEmpresaEvt)="manejarEventos($event)"></detalle-empresa>
     </div>
+    <div [ngSwitch]="noTuTurno">
+        <h1 *ngSwitchWhen="'YaHaSeleccionado'">
+            Gracias por seleccionar empresa 
+        </h1>
+        <h1 *ngSwitchWhen="'NoHaSeleccionado'">
+            Aun no es tu turno, espera a que seleccionen los alumos que te preceden
+        </h1>
 
+    </div>
     <div *ngIf="finalizado">
         <!--<resumen-proceso [listaAlumnosFinal]="listaAlumnosFinal" [listaAlumnosRestantes]="listaAlumnosAux" [listaEmpresas]="listaEmpresas" (resumenProcesoEvt)="manejarEventos($event)"></resumen-proceso>-->
     </div>

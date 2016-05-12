@@ -15,22 +15,21 @@ export class Empresa {
     constructor(nombre: string, descripcion: string, vacantes: number, vacantesLibres: number, id: number) {
 
         if (nombre != undefined) {
-            if (id != undefined)
-                this.id = id;
-
+            this.id = id;
+            console.log("ID ASIGNADO", id);
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.vacantes = vacantes;
-            if (vacantes != undefined) {
+            if (vacantesLibres != undefined)
                 this.vacantesLibres = vacantesLibres;
-            }
-            this.vacantesLibres = vacantes;
+            else
+                this.vacantesLibres = vacantes;
         }
     }
 
     public static fromJson(json: any, lowerProps: boolean) {
         if (lowerProps)
-            return new Empresa(json.nombre, json.descripcion, json.vacantes, json.vacantesLibres, json.ID);
+            return new Empresa(json.nombre, json.descripcion, json.vacantes, json.vacantesLibres, json.id);
 
         return new Empresa(json.Nombre, json.Descripcion, json.Vacantes, json.VacantesLibres, json.ID);
     }

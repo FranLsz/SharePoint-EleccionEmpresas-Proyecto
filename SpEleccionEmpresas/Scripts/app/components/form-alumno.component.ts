@@ -157,7 +157,7 @@ export class FormAlumnoComponent {
         this.o365UserName = "";
         this.userNameValido = 2;
 
-        this.form['_touched'] = false;
+        this.form['_touched'] = false; 
         this.form['_pristine'] = true;
 
         //this.nombre['_touched'] = false;

@@ -77,11 +77,11 @@ export class DataInitService {
 
     // Alumnos
     private alumnosData: Alumno[] = [
-        new Alumno("Adrián", "Arranz Cuervo ", this.getRandomPuntacion(), 0, "672ef9b0-6c2e-480f-bcad-917f8e304728", "fran1@franapp.onmicrosoft.com"),
-        new Alumno("Daniel", "Corregidor Coronado", this.getRandomPuntacion(), 1, "552ef9b0-6c2e-480f-bcad-917f8e304729", "fran2@franapp.onmicrosoft.com"),
-        new Alumno("Félix", "Martínez Álvaro", this.getRandomPuntacion(), 2, "002ef9b0-6c2e-480f-bcad-917f8e304727", "fran3@franapp.onmicrosoft.com"),
-        new Alumno("Álvaro", "Ramiro Ledesma", this.getRandomPuntacion(), 3, "332ef9b0-6c2e-480f-bcad-917f8e304726", "fran4@franapp.onmicrosoft.com"),
-        new Alumno("José Antonio", "Pérez-Ruibal Del Águila", this.getRandomPuntacion(), 4, "192ef9b0-6c2e-480f-bcad-917f8e304725", "fran5@franapp.onmicrosoft.com"),
+        //new Alumno("Adrián", "Arranz Cuervo ", this.getRandomPuntacion(), 0, "672ef9b0-6c2e-480f-bcad-917f8e304728", "fran1@franapp.onmicrosoft.com"),
+        //new Alumno("Daniel", "Corregidor Coronado", this.getRandomPuntacion(), 1, "552ef9b0-6c2e-480f-bcad-917f8e304729", "fran2@franapp.onmicrosoft.com"),
+        //new Alumno("Félix", "Martínez Álvaro", this.getRandomPuntacion(), 2, "002ef9b0-6c2e-480f-bcad-917f8e304727", "fran3@franapp.onmicrosoft.com"),
+        //new Alumno("Álvaro", "Ramiro Ledesma", this.getRandomPuntacion(), 3, "332ef9b0-6c2e-480f-bcad-917f8e304726", "fran4@franapp.onmicrosoft.com"),
+        //new Alumno("José Antonio", "Pérez-Ruibal Del Águila", this.getRandomPuntacion(), 4, "192ef9b0-6c2e-480f-bcad-917f8e304725", "fran5@franapp.onmicrosoft.com"),
         //new Alumno("Petter Paul", "Lozano Cruzado", this.getRandomPuntacion(), 5, "192ef9b0-6c2e-480f-bcad-917f8e304729", "fran@franapp.onmicrosoft.com"),
         //new Alumno("Eduardo", "Flores Miranda", this.getRandomPuntacion(), 6, "192ef9b0-6c2e-480f-bcad-917f8e304729", "fran@franapp.onmicrosoft.com"),
         //new Alumno("Miguel Ángel", "Gómez Sánchez", this.getRandomPuntacion(), 7, "192ef9b0-6c2e-480f-bcad-917f8e304729", "fran@franapp.onmicrosoft.com"),

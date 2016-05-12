@@ -71,7 +71,6 @@ export class HistorialService {
         var obj = {
             '__metadata': { 'type': 'SP.Data.EmpresaAlumnoListItem' },
             'DatosJson': historial.datosJson,
-            'Fecha': historial.fecha,
             'Terminado': historial.terminado,
             'EmpresasJson': historial.empresasJson,
             'AlumnosJson': historial.alumnosJson

@@ -36,6 +36,7 @@ export class ProcesoSeleccionComponent {
     public procesoSeleccionEvt: EventEmitter;
     public procesoActual: Historial;
     public listaEmpresas: Empresa[];
+    public noTuTurno: string;
     //lista de alumnos con sus empresas
     public estadoProceso: Alumno[];
     // queremos que la lista del proceso sea una copia para no modificar la del componente padre
@@ -64,26 +65,58 @@ export class ProcesoSeleccionComponent {
                     console.log("PROCESO DE SELECCION DETECTADO");
                     this.sinProcesos = false;
                     this.procesoActual = Historial.fromJson(data.d.results[0]);
+                    console.log("HISTORIAL DEVUELTO", data.d.results[0]);
+                    if (this.procesoActual.datosJson != "vacio") {
+                        var auxList = [];
+                        var auxJson = JSON.parse(this.procesoActual.datosJson);
+                        for (var j = 0; j < auxJson.length; j++) {
+                            var alum: Alumno;
+                            alum.nombre = auxJson[j].nombre;
+                            alum.apellidos = auxJson[j].apellidos;
+                            alum.puntuacion = auxJson[j].puntuacion;
+                            alum.userGuid = auxJson[j].userGuid;
+                            alum.accountName = auxJson[j].accountName;
+                            alum.id = auxJson[j].id;
+                            alum.empresa = Empresa.fromJson(auxJson[j].empresa, true);
+                            auxList.push(alum);
+                        }
 
-                    if (this.procesoActual.datosJson != "vacio")
-                        this.estadoProceso = <Alumno[]>Alumno.fromJsonList(JSON.parse(this.procesoActual.datosJson), true);
+                        this.listaAlumnos = auxList;
+                        // this.estadoProceso = <Alumno[]>Alumno.fromJsonList(JSON.parse(this.procesoActual.datosJson), true);
+                    }
                     else
                         this.estadoProceso = [];
 
+
+                    console.log(Empresa.fromJsonList(JSON.parse(this.procesoActual.empresasJson), true));
                     this.listaEmpresas = <Empresa[]>Empresa.fromJsonList(JSON.parse(this.procesoActual.empresasJson), true);
+                    console.log(this.listaEmpresas);
+
+
                     this.listaAlumnos = <Alumno[]>Alumno.fromJsonList(JSON.parse(this.procesoActual.alumnosJson), true);
-
-                    console.log("LISTA JSON", this.listaAlumnos);
-                    console.log("LISTA", this.listaAlumnos);
-
+                    console.log("LISTADO EMPRESAS", this.listaEmpresas);
                     this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnos);
-                    console.log("LOGGED", this.alumnoLogeado.userGuid);
-                    console.log("Top puntuacion", this.alumno.userGuid);
 
+                    // es tu turno
                     if (this.alumno.userGuid == this.alumnoLogeado.userGuid) {
-                        alert("Holita, tu turno");
+                        this.noTuTurno = "siEs";
+
                     } else {
-                        alert("Que te pires, no es tu turno");
+
+                        console.log("ALUMNOS RESTANTES", this.listaAlumnos);
+                        var noHaSeleccionado = false;
+                        //  comprueba si el alumno logeado esta entre los alumnos restantes
+                        for (var i = 0; i < this.listaAlumnos.length; i++) {
+                            if (this.listaAlumnos[i].userGuid == this.alumnoLogeado.userGuid) {
+                                this.noTuTurno = "NoHaSeleccionado";
+                                noHaSeleccionado = true;
+                            }
+                        }
+
+                        if (!noHaSeleccionado) {
+                            // no es tu turno porque ya has seleccionado
+                            this.noTuTurno = "YaHaSeleccionado";
+                        }
                     }
                 }
             },
@@ -100,14 +133,14 @@ export class ProcesoSeleccionComponent {
 
         this.listaAlumnosFinal.push(alumno);
 
-        var i = this.listaAlumnosAux.map(function (e) { return e.id; }).indexOf(alumno.id);
-        this.listaAlumnosAux.splice(i, 1);
+        var i = this.listaAlumnos.map(function (e) { return e.id; }).indexOf(alumno.id);
+        this.listaAlumnos.splice(i, 1);
 
         this.empresa.vacantesLibres--;
 
         // Actualizamos las vacantes de la empresa y comprobamos si quedan vacantes libres en general
         for (var i = 0; i < this.listaEmpresas.length; i++) {
-
+            console.log(this.listaEmpresas[i].id + "///" + this.empresa.id);
             if (this.listaEmpresas[i].id == this.empresa.id)
                 this.listaEmpresas[i] = this.empresa;
 
@@ -118,22 +151,40 @@ export class ProcesoSeleccionComponent {
 
 
         // si hay un siguiente alumno
-        if (this.listaAlumnosAux.length > 0) {
+        if (this.listaAlumnos.length > 0) {
 
-            // si no quedan vacantes
+            // si no quedan vacants
             if (!vacantes) {
-                this.finalizado = true;
+                this.guardarCambios(true);
 
             } else {
                 // si quedan buscamos otro alumno
-                this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnosAux);
-                this.empresa = null;
+                //this.alumno = Alumno.getMayorPuntuacion(this.listaAlumnosAux);
+                //this.empresa = null;
+
+                this.guardarCambios(false);
             }
         } else {
-            document.getElementById("volverAtras").style.display = 'block';
-            this.finalizado = true;
+            // document.getElementById("volverAtras").style.display = 'block';
+            this.guardarCambios(true);
 
         }
+    }
+
+    public guardarCambios(finalizado: boolean) {
+        this.estadoProceso.push(this.alumno);
+
+        this.procesoActual.datosJson = JSON.stringify(this.estadoProceso);
+        this.procesoActual.terminado = finalizado;
+        this.procesoActual.alumnosJson = JSON.stringify(this.listaAlumnos);
+        this.procesoActual.empresasJson = JSON.stringify(this.listaEmpresas);
+        console.log("HISTORIAL FINAL", this.procesoActual);
+        this._historialService.putHistorial(this.procesoActual).subscribe(
+            data => {
+                this.noTuTurno = "YaHaSeleccionado";
+            },
+            err => { LogService.log("PUT Historial Error: " + err._body); }
+        );
     }
 
     public lanzarEvento(orden: string, datos: any) {
